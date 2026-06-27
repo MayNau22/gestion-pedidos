@@ -1,4 +1,4 @@
-package com.uisrael.pedidos2026.infraestructura.persistencia;
+package com.uisrael.pedidos2026.infraestructura.persistencia.jpa;
 
 import java.util.Date;
 
@@ -11,18 +11,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "productos")
-public class ProductosEntity {
+@Table(name = "carritos")
+public class CarritosEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idProducto;
-	private int idCategoria;
-	private String nombre;
-	private String descripcion;
-	private Double precio;
-	private int stock;
-	private String imagenUrl;
-	private boolean disponible;
+	private int idCarrito;
+	private int idUsuario;
 	private Date fechaCreacion;
 
 }
