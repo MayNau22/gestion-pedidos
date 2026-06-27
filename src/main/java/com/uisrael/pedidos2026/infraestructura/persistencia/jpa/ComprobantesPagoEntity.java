@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "comprobantespago")
+@Table(name = "comprobantes_pago")
 public class ComprobantesPagoEntity {
 	
 	@Id
