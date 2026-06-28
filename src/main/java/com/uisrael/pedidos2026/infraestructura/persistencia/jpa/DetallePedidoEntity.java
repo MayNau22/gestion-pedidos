@@ -1,7 +1,5 @@
 package com.uisrael.pedidos2026.infraestructura.persistencia.jpa;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,20 +9,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "comprobantes_pago")
-public class ComprobantesPagoEntity {
-	
+@Table(name = "detalle_pedidos")
+public class DetallePedidoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idComprobante;
-	
+	private int idDetallePedido;
 	private int idPedido;
-	private String tipoPago;
-	private String archivoUrl;
-	private Double monto;
-	private Date fechaSubida;
-	private int idEstado;
-	private String observacion;
-
+	private int idProducto;
+	private int cantidad;
+	private double precioUnitario;
+	private double subtotal;
 
 }
