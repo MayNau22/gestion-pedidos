@@ -8,6 +8,8 @@ class Pedidos2026ApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
+		
 	}
 
 }
