@@ -5,12 +5,11 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.ICarritoUseCase;
 import com.uisrael.pedidos2026.dominio.entidades.Carrito;
 import com.uisrael.pedidos2026.dominio.repositorios.ICarritoRepositorio;
 
-public class CarritoUseCaseImpl implements ICarritoUseCase {
-
+public class CarritoUseCaseImpl implements ICarritoUseCase{
+	
 	private final ICarritoRepositorio repositorio;
-
+	
 	public CarritoUseCaseImpl(ICarritoRepositorio repositorio) {
-		super();
 		this.repositorio = repositorio;
 	}
 
@@ -21,8 +20,9 @@ public class CarritoUseCaseImpl implements ICarritoUseCase {
 
 	@Override
 	public Carrito buscarPorId(int idCarrito) {
-		return repositorio.buscarPorId(idCarrito)
+		return repositorio.buscarId(idCarrito)
 				.orElseThrow(() -> new RuntimeException("Carrito no encontrado"));
+		
 	}
 
 	@Override
@@ -34,4 +34,6 @@ public class CarritoUseCaseImpl implements ICarritoUseCase {
 	public void eliminar(int idCarrito) {
 		repositorio.eliminar(idCarrito);
 	}
+
 }
+

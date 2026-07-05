@@ -9,3 +9,4 @@ public interface ICarritoUseCase {
 	List<Carrito> listarTodos();
 	void eliminar(int idCarrito);
 }
+	

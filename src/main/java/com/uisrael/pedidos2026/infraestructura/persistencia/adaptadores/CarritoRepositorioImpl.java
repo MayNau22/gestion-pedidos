@@ -5,16 +5,16 @@ import java.util.Optional;
 
 import com.uisrael.pedidos2026.dominio.entidades.Carrito;
 import com.uisrael.pedidos2026.dominio.repositorios.ICarritoRepositorio;
-import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.CarritosEntity;
+import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.CarritoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.ICarritoJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.repositorios.ICarritoJpaRepositorio;
 
-public class CarritoRepositoriosImpl implements ICarritoRepositorio {
-
+public class CarritoRepositorioImpl implements ICarritoRepositorio {
+	
 	private final ICarritoJpaRepositorio jpaRepositorio;
 	private final ICarritoJpaMapper entityMapper;
 	
-	public CarritoRepositoriosImpl(ICarritoJpaRepositorio jpaRepositorio, ICarritoJpaMapper entityMapper) {
+	public CarritoRepositorioImpl(ICarritoJpaRepositorio jpaRepositorio, ICarritoJpaMapper entityMapper) {
 		super();
 		this.jpaRepositorio = jpaRepositorio;
 		this.entityMapper = entityMapper;
@@ -22,13 +22,13 @@ public class CarritoRepositoriosImpl implements ICarritoRepositorio {
 
 	@Override
 	public Carrito guardar(Carrito nuevoCarrito) {
-		CarritosEntity entity = entityMapper.toEntity(nuevoCarrito);
-		CarritosEntity guardado = jpaRepositorio.save(entity);
+		CarritoEntity entity = entityMapper.toEntity(nuevoCarrito);
+		CarritoEntity guardado = jpaRepositorio.save(entity);
 		return entityMapper.toDomain(guardado);
 	}
 
 	@Override
-	public Optional<Carrito> buscarPorId(int idCarrito) {
+	public Optional<Carrito> buscarId(int idCarrito) {
 		return jpaRepositorio.findById(idCarrito).map(entityMapper::toDomain);
 	}
 
@@ -39,6 +39,7 @@ public class CarritoRepositoriosImpl implements ICarritoRepositorio {
 
 	@Override
 	public void eliminar(int idCarrito) {
-		jpaRepositorio.deleteById(idCarrito);
+		jpaRepositorio.deleteById(idCarrito);		
 	}
+	
 }
