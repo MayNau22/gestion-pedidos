@@ -49,6 +49,5 @@ public class ProductoRepositorioImpl implements IProductoRepositorio{
 		return jpaRepositorio.findByNombre(nombre).stream().map(entityMapper::toDomain).toList();
 	}
 	
-	
 
 }

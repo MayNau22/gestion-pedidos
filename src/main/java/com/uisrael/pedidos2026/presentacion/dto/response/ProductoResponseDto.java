@@ -13,6 +13,7 @@ public class ProductoResponseDto {
 	private boolean disponible;
 	private Date fechaCreacion;
 	
+	
 	public int getIdProducto() {
 		return idProducto;
 	}

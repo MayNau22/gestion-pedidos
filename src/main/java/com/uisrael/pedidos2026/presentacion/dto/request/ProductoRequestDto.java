@@ -2,6 +2,7 @@ package com.uisrael.pedidos2026.presentacion.dto.request;
 
 import java.util.Date;
 
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -23,5 +24,6 @@ public class ProductoRequestDto {
 	private boolean disponible;
 	@NotBlank
 	private Date fechaCreacion;
+
 
 }
