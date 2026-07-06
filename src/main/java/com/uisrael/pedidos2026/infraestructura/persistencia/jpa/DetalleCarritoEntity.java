@@ -20,7 +20,7 @@ public class DetalleCarritoEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="idCarrito")
-	private CarritoEntity idCarrito;
+	private CarritoEntity carrito;
 	
 	@ManyToOne
 	@JoinColumn(name="idProducto")
