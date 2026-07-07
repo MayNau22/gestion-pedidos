@@ -23,5 +23,6 @@ public class CarritoEntity {
 	private Date fechaCreacion;
 	
 	@OneToMany(mappedBy = "carrito")
-	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
+	private List<DetalleCarritoEntity> detalleCarritos = new ArrayList<>();
+
 }

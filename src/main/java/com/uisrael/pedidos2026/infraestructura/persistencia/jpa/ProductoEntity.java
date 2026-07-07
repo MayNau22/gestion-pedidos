@@ -31,10 +31,10 @@ public class ProductoEntity {
 	private Date fechaCreacion;
 	
 	@ManyToOne
-	@JoinColumn(name = "idCategoria")
+	@JoinColumn(name = "id_categoria")
 	private CategoriaEntity categoria; 
 	
-	@OneToMany(mappedBy = "idProducto")
+	@OneToMany(mappedBy = "producto")
 	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
 
 }

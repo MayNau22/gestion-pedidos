@@ -10,6 +10,8 @@ import lombok.Data;
 public class ProductoRequestDto {
 	
 	private int idProducto;
+	
+	private int categoria;
 	@NotBlank
 	private String nombre;
 	@NotBlank
@@ -20,10 +22,10 @@ public class ProductoRequestDto {
 	private int stock;
 	@NotBlank
 	private String imagenUrl;
-	@NotBlank
 	private boolean disponible;
 	@NotBlank
 	private Date fechaCreacion;
+	
 
 
 }

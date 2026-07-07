@@ -65,7 +65,6 @@ public class Pedidos2026Config {
 	IDetalleCarritoRepositorio detalleCarritoRepositorio(IDetalleCarritoJpaRepositorio jpaRepositorio, IDetalleCarritoJpaMapper mapper) {
 		return new DetalleCarritoRepositorioImpl(jpaRepositorio, mapper);
 	}
-	
 	@Bean
 	IDetalleCarritoUseCase detalleCarritoUseCae(IDetalleCarritoRepositorio repoUseCase) {
 		return new DetalleCarritoUseCaseImpl(repoUseCase);
