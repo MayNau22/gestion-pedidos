@@ -16,15 +16,14 @@ public class DetalleCarritoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDetalleCarrito;
+	private int cantidad;
 	private double subtotal;
+	@ManyToOne
+	@JoinColumn(name="id_carrito")
+	private CarritoEntity carrito;
 	
 	@ManyToOne
-	@JoinColumn(name="idCarrito")
-	private CarritoEntity idCarrito;
-	
-	@ManyToOne
-	@JoinColumn(name="idProducto")
-	private ProductoEntity idProducto;
-	
+	@JoinColumn(name="id_producto")
+	private ProductoEntity producto;
 
 }
