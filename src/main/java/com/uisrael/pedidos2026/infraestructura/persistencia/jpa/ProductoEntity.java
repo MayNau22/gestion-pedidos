@@ -1,5 +1,9 @@
 package com.uisrael.pedidos2026.infraestructura.persistencia.jpa;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -7,8 +11,6 @@ import lombok.Data;
 @Entity
 @Table(name = "productos")
 public class ProductoEntity {
-<<<<<<< HEAD
-=======
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,22 +29,6 @@ public class ProductoEntity {
 	
 	@OneToMany(mappedBy = "producto")
 	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
->>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProducto;
-
    
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", referencedColumnName = "idCategoria")
-    private CategoriaEntity categoria; 
-
-    private String nombre;
-    private String descripcion;
-    private Double precio;
-    private int stock;
-    private String imagenUrl;
-    private String disponible;
  
 }

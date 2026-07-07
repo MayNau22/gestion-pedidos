@@ -23,19 +23,8 @@ public class DetalleCarritoEntity {
 	private CarritoEntity carrito;
 	
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinColumn(name="idCarrito")
-	private CarritoEntity carrito;
-	
-	@ManyToOne
-	@JoinColumn(name="idProducto")
-	private ProductoEntity producto;
-	
-	
-	//hola
-=======
 	@JoinColumn(name="id_producto")
 	private ProductoEntity producto;
->>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
+
 
 }
