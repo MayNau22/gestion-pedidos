@@ -14,11 +14,11 @@ public class EstadosGeneralesEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int  idEstado;
+	private int idEstado; 
 	
-	private String tipoEstado;
-	private String nombre;
-	private String descripcion;
-	private String activo;
+	private String tipoEstado; 
+	private String nombre; 
+	private String descripcion; 
+	private String activo; 
 
 }

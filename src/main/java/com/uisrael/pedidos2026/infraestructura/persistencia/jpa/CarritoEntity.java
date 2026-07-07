@@ -1,9 +1,10 @@
 package com.uisrael.pedidos2026.infraestructura.persistencia.jpa;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "carritos")
+@Table(name = "carrito")
 public class CarritoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,9 @@ public class CarritoEntity {
 	private int idUsuario;
 	private Date fechaCreacion;
 	
-	@OneToMany(mappedBy = "idCarrito")
-	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
+
+	
+	
+	@OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL)
+	private List<DetalleCarritoEntity> detalleCarrito;
 }
