@@ -16,7 +16,7 @@ public class DetallePedidoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDetallePedido;
-	private int idPedido;
+
 	private int idProducto;
 	private int cantidad;
 	private double precioUnitario;

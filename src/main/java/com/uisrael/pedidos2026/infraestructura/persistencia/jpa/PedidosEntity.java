@@ -24,7 +24,7 @@ public class PedidosEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPedido;
 	
-	private int idUsuario;
+
 	private int idEstado;
 	private Date fechaPedido;
 	private Date fechaEntrega;

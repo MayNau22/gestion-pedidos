@@ -17,8 +17,8 @@ import lombok.Data;
 public class HistorialPedidosEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idHistorial;
-	private int idPedido;
+	private int idHistorial_Pedidos;
+	
 	private int idEstadoAnterior;
 	private int idEstadoNuevo;
 	private String observacion;
