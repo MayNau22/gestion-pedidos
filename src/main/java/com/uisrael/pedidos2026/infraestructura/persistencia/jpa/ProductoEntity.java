@@ -30,5 +30,6 @@ public class ProductoEntity {
 	@OneToMany(mappedBy = "producto")
 	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
 
+   
  
 }
