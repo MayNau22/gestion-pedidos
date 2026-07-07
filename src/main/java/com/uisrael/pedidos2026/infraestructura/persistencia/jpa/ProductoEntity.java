@@ -11,11 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "productos")
 public class ProductoEntity {
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 8f1af7345385b1bebdda2f3b0949329c6756315e
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProducto;
@@ -33,11 +29,6 @@ public class ProductoEntity {
 	
 	@OneToMany(mappedBy = "producto")
 	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 8f1af7345385b1bebdda2f3b0949329c6756315e
-   
  
 }
