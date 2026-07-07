@@ -23,9 +23,15 @@ public class CarritoEntity {
 	private int idUsuario;
 	private Date fechaCreacion;
 	
+<<<<<<< HEAD
 
 	
 	
 	@OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL)
 	private List<DetalleCarritoEntity> detalleCarrito;
+=======
+	@OneToMany(mappedBy = "carrito")
+	private List<DetalleCarritoEntity> detalleCarritos = new ArrayList<>();
+
+>>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
 }

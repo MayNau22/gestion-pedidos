@@ -1,17 +1,20 @@
 package com.uisrael.pedidos2026.dominio.entidades;
 
+
 public class DetalleCarrito {
 	
 	private int idDetalleCarrito;
-	private Carrito idCarrito;
-	private Producto idProducto;
+	private Carrito carrito;
+	private Producto producto;
+	private int cantidad;
 	private double subtotal;
-	
-	public DetalleCarrito(int idDetalleCarrito, Carrito idCarrito, Producto idProducto, double subtotal) {
+		
+	public DetalleCarrito(int idDetalleCarrito, Carrito carrito, Producto producto, int cantidad, double subtotal) {
 		super();
 		this.idDetalleCarrito = idDetalleCarrito;
-		this.idCarrito = idCarrito;
-		this.idProducto = idProducto;
+		this.carrito = carrito;
+		this.producto = producto;
+		this.cantidad = cantidad;
 		this.subtotal = subtotal;
 	}
 
@@ -23,20 +26,28 @@ public class DetalleCarrito {
 		this.idDetalleCarrito = idDetalleCarrito;
 	}
 
-	public Carrito getIdCarrito() {
-		return idCarrito;
+	public Carrito getCarrito() {
+		return carrito;
 	}
 
-	public void setIdCarrito(Carrito idCarrito) {
-		this.idCarrito = idCarrito;
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
 	}
 
-	public Producto getIdProducto() {
-		return idProducto;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setIdProducto(Producto idProducto) {
-		this.idProducto = idProducto;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public double getSubtotal() {
@@ -47,9 +58,4 @@ public class DetalleCarrito {
 		this.subtotal = subtotal;
 	}
 	
-	
-	
-	
-	
-
 }

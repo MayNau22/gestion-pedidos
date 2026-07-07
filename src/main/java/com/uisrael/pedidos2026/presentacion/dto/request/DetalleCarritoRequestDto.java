@@ -1,7 +1,5 @@
 package com.uisrael.pedidos2026.presentacion.dto.request;
 
-import com.uisrael.pedidos2026.dominio.entidades.Carrito;
-import com.uisrael.pedidos2026.dominio.entidades.Producto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -10,9 +8,11 @@ public class DetalleCarritoRequestDto {
 	
 	private int idDetalleCarrito;
 	@NotBlank
-	private Carrito idCarrito;
+	private int idCarrito;
 	@NotBlank
-	private Producto idProducto;
+	private int idProducto;
+	@NotBlank
+	private int cantidad;
 	@NotBlank
 	private double subtotal;
 

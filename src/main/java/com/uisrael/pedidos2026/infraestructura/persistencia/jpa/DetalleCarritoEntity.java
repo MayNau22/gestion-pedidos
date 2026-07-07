@@ -16,9 +16,14 @@ public class DetalleCarritoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDetalleCarrito;
+	private int cantidad;
 	private double subtotal;
+	@ManyToOne
+	@JoinColumn(name="id_carrito")
+	private CarritoEntity carrito;
 	
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name="idCarrito")
 	private CarritoEntity carrito;
 	
@@ -28,5 +33,9 @@ public class DetalleCarritoEntity {
 	
 	
 	//hola
+=======
+	@JoinColumn(name="id_producto")
+	private ProductoEntity producto;
+>>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
 
 }
