@@ -31,32 +31,32 @@ import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
 public class SpringBeanConfiguration {
 
     @Bean
-    public IUsuarioUseCase usuarioUseCase(IUsuarioRepositorio usuarioRepositorio) {
+    IUsuarioUseCase usuarioUseCase(IUsuarioRepositorio usuarioRepositorio) {
         return new UsuarioUseCaseImpl(usuarioRepositorio);
     }
 
     @Bean
-    public ICarritoUseCase carritoUseCase(ICarritoRepositorio carritoRepositorio) {
+    ICarritoUseCase carritoUseCase(ICarritoRepositorio carritoRepositorio) {
         return new CarritoUseCaseImpl(carritoRepositorio);
     }
 
     @Bean
-    public IHistorialPedidoUseCase historialPedidoUseCase(IHistorialPedidoRepositorio historialPedidoRepositorio) {
+    IHistorialPedidoUseCase historialPedidoUseCase(IHistorialPedidoRepositorio historialPedidoRepositorio) {
         return new HistorialPedidoUseCaseImpl(historialPedidoRepositorio);
     }
 
     @Bean
-    public IEstadosGeneralesUseCase estadosGeneralesUseCase(IEstadosGeneralesRepositorio estadosGeneralesRepositorio) {
+    IEstadosGeneralesUseCase estadosGeneralesUseCase(IEstadosGeneralesRepositorio estadosGeneralesRepositorio) {
         return new EstadosGeneralesUseCaseImpl(estadosGeneralesRepositorio);
     }
 
     @Bean
-    public IEntregasUseCase entregasUseCase(IEntregasRepositorio entregasRepositorio) {
+    IEntregasUseCase entregasUseCase(IEntregasRepositorio entregasRepositorio) {
         return new EntregasUseCaseImpl(entregasRepositorio);
     }
 
     @Bean
-    public IComprobantesPagoUseCase comprobantesPagoUseCase(IComprobantesPagoRepositorio comprobantesPagoRepositorio) {
+    IComprobantesPagoUseCase comprobantesPagoUseCase(IComprobantesPagoRepositorio comprobantesPagoRepositorio) {
         return new ComprobantesPagoUseCaseImpl(comprobantesPagoRepositorio);
     }
     
