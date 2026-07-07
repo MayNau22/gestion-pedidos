@@ -5,7 +5,7 @@ import java.util.Date;
 public class Producto {
 	
 	private int idProducto;
-	private Categoria idCategoria;
+	private Categoria categoria;
 	private String nombre;
 	private String descripcion;
 	private Double precio;
@@ -14,11 +14,11 @@ public class Producto {
 	private boolean disponible;
 	private Date fechaCreacion;
 	
-	public Producto(int idProducto, Categoria idCategoria, String nombre, String descripcion, Double precio, int stock,
+	public Producto(int idProducto, Categoria categoria, String nombre, String descripcion, Double precio, int stock,
 			String imagenUrl, boolean disponible, Date fechaCreacion) {
 		super();
 		this.idProducto = idProducto;
-		this.idCategoria = idCategoria;
+		this.categoria = categoria;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
@@ -36,12 +36,12 @@ public class Producto {
 		this.idProducto = idProducto;
 	}
 
-	public Categoria getIdCategoria() {
-		return idCategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setIdCategoria(Categoria idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public String getNombre() {
@@ -99,7 +99,5 @@ public class Producto {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	
-	
 	
 }
