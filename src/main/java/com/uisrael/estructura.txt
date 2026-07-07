@@ -1,0 +1,149 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 0000003B C434:508B
+C:.
+¦   estructura.txt
+¦   
++---pedidos2026
+    ¦   Pedidos2026Application.java
+    ¦   
+    +---aplicacion
+    ¦   +---casosuso
+    ¦   ¦   +---entrada
+    ¦   ¦   ¦       ICarritoUseCase.java
+    ¦   ¦   ¦       ICategoriaUseCase.java
+    ¦   ¦   ¦       IComprobantesPagoUseCase.java
+    ¦   ¦   ¦       IDetalleCarritoUseCase.java
+    ¦   ¦   ¦       IEntregasUseCase.java
+    ¦   ¦   ¦       IEstadosGeneralesUseCase.java
+    ¦   ¦   ¦       IHistorialPedidoUseCase.java
+    ¦   ¦   ¦       IProductoUseCase.java
+    ¦   ¦   ¦       IUsuarioUseCase.java
+    ¦   ¦   ¦       
+    ¦   ¦   +---impl
+    ¦   ¦           CarritoUseCaseImpl.java
+    ¦   ¦           CategoriaUseCaseImpl.java
+    ¦   ¦           ComprobantesPagoUseCaseImpl.java
+    ¦   ¦           DetalleCarritoUseCaseImpl.java
+    ¦   ¦           EntregasUseCaseImpl.java
+    ¦   ¦           EstadosGeneralesUseCaseImpl.java
+    ¦   ¦           HistorialPedidoUseCaseImpl.java
+    ¦   ¦           ProductoUseCaseImpl.java
+    ¦   ¦           UsuarioUseCaseImpl.java
+    ¦   ¦           
+    ¦   +---excepciones
+    ¦           Test.java
+    ¦           
+    +---dominio
+    ¦   +---entidades
+    ¦   ¦       Carrito.java
+    ¦   ¦       Categoria.java
+    ¦   ¦       ComprobantesPago.java
+    ¦   ¦       DetalleCarrito.java
+    ¦   ¦       DetallePedido.java
+    ¦   ¦       Entregas.java
+    ¦   ¦       EstadosGenerales.java
+    ¦   ¦       HistorialPedido.java
+    ¦   ¦       Pedidos.java
+    ¦   ¦       Producto.java
+    ¦   ¦       Rol.java
+    ¦   ¦       Usuario.java
+    ¦   ¦       UsuarioRol.java
+    ¦   ¦       
+    ¦   +---repositorios
+    ¦           ICarritoRepositorio.java
+    ¦           ICategoriaRepositorio.java
+    ¦           IComprobantesPagoRepositorio.java
+    ¦           IDetalleCarritoRepositorio.java
+    ¦           IDetallePedidosRepositorio.java
+    ¦           IEntregasRepositorio.java
+    ¦           IEstadosGeneralesRepositorio.java
+    ¦           IHistorialPedidoRepositorio.java
+    ¦           IHistorialPedidosRepositorio.java
+    ¦           IPedidosRepositorio.java
+    ¦           IProductoRepositorio.java
+    ¦           IRolRepositorio.java
+    ¦           IUsuarioRepositorio.java
+    ¦           IUsuarioRolRepositorio.java
+    ¦           
+    +---infraestructura
+    ¦   +---configuracion
+    ¦   ¦       Pedidos2026Config.java
+    ¦   ¦       SpringBeanConfiguration.java
+    ¦   ¦       
+    ¦   +---persistencia
+    ¦   ¦   ¦   test.java
+    ¦   ¦   ¦   
+    ¦   ¦   +---adaptadores
+    ¦   ¦   ¦       CarritoRepositorioImpl.java
+    ¦   ¦   ¦       CategoriaRepositorioImpl.java
+    ¦   ¦   ¦       ComprobantesPagoRepositorioImpl.java
+    ¦   ¦   ¦       DetalleCarritoRepositorioImpl.java
+    ¦   ¦   ¦       EntregasRepositorioImpl.java
+    ¦   ¦   ¦       EstadosGeneralesRepositorioImpl.java
+    ¦   ¦   ¦       HistorialPedidoRepositoriosImpl.java
+    ¦   ¦   ¦       ProductoRepositorioImpl.java
+    ¦   ¦   ¦       UsuarioRolRepositoriosImpl.java
+    ¦   ¦   ¦       
+    ¦   ¦   +---jpa
+    ¦   ¦   ¦       CarritoEntity.java
+    ¦   ¦   ¦       CategoriaEntity.java
+    ¦   ¦   ¦       ComprobantesPagoEntity.java
+    ¦   ¦   ¦       DetalleCarritoEntity.java
+    ¦   ¦   ¦       DetallePedidoEntity.java
+    ¦   ¦   ¦       EntregasEntity.java
+    ¦   ¦   ¦       EstadosGeneralesEntity.java
+    ¦   ¦   ¦       HistorialPedidosEntity.java
+    ¦   ¦   ¦       PedidosEntity.java
+    ¦   ¦   ¦       ProductoEntity.java
+    ¦   ¦   ¦       RolesEntity.java
+    ¦   ¦   ¦       UsuarioRolesEntity.java
+    ¦   ¦   ¦       UsuariosEntity.java
+    ¦   ¦   ¦       
+    ¦   ¦   +---mapeadores
+    ¦   ¦           ICarritoJpaMapper.java
+    ¦   ¦           ICategoriaJpaMapper.java
+    ¦   ¦           IComprobantesPagoJpaMapper.java
+    ¦   ¦           IDetalleCarritoJpaMapper.java
+    ¦   ¦           IEntregasJpaMapper.java
+    ¦   ¦           IEstadosGeneralesJpaMapper.java
+    ¦   ¦           IHistorialPedidoJpaMapper.java
+    ¦   ¦           IProductoJpaMapper.java
+    ¦   ¦           IUsuarioRolJpaMapper.java
+    ¦   ¦           
+    ¦   +---repositorios
+    ¦           ICarritoJpaRepositorio.java
+    ¦           ICategoriaJpaRepositorio.java
+    ¦           IComprobantesPagoJpaRepositorio.java
+    ¦           IDetalleCarritoJpaRepositorio.java
+    ¦           IEntregasJpaRepositorio.java
+    ¦           IEstadosGeneralesJpaRepositorio.java
+    ¦           IHistorialPedidoJpaRepositorio.java
+    ¦           IProductoJpaRepositorio.java
+    ¦           IUsuarioRolJpaRepositorio.java
+    ¦           
+    +---presentacion
+        +---controladores
+        ¦       CarritoContoller.java
+        ¦       CategoriaController.java
+        ¦       DetalleCarritoController.java
+        ¦       ProductoController.java
+        ¦       
+        +---dto
+        ¦   +---request
+        ¦   ¦       CarritoRequestDto.java
+        ¦   ¦       CategoriaRequestDto.java
+        ¦   ¦       DetalleCarritoRequestDto.java
+        ¦   ¦       ProductoRequestDto.java
+        ¦   ¦       
+        ¦   +---response
+        ¦           CarritoResponseDto.java
+        ¦           CategoriaResponseDto.java
+        ¦           DetalleCarritoResponseDto.java
+        ¦           ProductoResponseDto.java
+        ¦           
+        +---mapeadores
+                ICarritoDtoMapper.java
+                ICategoriaDtoMapper.java
+                IDetalleCarritoDtoMapper.java
+                IProductoDtoMapper.java
+                
