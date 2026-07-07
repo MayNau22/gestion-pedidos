@@ -23,6 +23,10 @@ public class DetalleCarritoEntity {
 	private CarritoEntity carrito;
 	
 	@ManyToOne
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f1af7345385b1bebdda2f3b0949329c6756315e
 	@JoinColumn(name="id_producto")
 	private ProductoEntity producto;
 
