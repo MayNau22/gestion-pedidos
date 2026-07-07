@@ -17,21 +17,19 @@ public class ComprobantesPagoEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idComprobante; 
+	private int idComprobante;
+	
+	private String tipoPago;
+	private String archivoUrl;
+	private Double monto;
+	private Date fechaSubida;
+	private String observacion;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pedido", referencedColumnName = "idPedido")
-	private PedidosEntity pedido;
-	
-	private String tipoPago; 
-	private String archivoUrl; 
-	private Double monto; //
-	private Date fechaSubida; 
+	@JoinColumn(name = "idPedido")
+	private PedidosEntity fkPedidosComprobantePagoEntity;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_estado", referencedColumnName = "idEstado")
-	private EstadosGeneralesEntity estado;
-	
-	private String observacion; 
-
+	@JoinColumn(name = "idEstado")
+	private EstadosGeneralesEntity fkEstadosGeneralesComprobantesPagoEntity;
 }

@@ -44,4 +44,8 @@ public class PedidosEntity {
 	@JoinColumn(name = "idUsuario")
 	private UsuariosEntity fkUsuariosPedidoEntity;
 	
+	@ManyToOne
+	@JoinColumn(name = "idEstado")
+	private EstadosGeneralesEntity fkEstadosPedidosEntity;
+	
 }
