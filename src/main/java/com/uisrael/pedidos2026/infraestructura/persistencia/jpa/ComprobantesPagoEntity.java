@@ -25,7 +25,7 @@ public class ComprobantesPagoEntity {
 	private Date fechaSubida;
 	private String observacion;
 	
-
+	@ManyToOne
 	@JoinColumn(name = "id_pedido")
 	private PedidosEntity pedidoComprobante;
 	

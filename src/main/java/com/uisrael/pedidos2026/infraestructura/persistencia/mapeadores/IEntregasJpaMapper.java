@@ -8,11 +8,11 @@ import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EntregasEntity;
 @Mapper(componentModel = "spring")
 public interface IEntregasJpaMapper {
 	
-	@Mapping(source = "pedido.idPedido", target = "idPedido")
-	@Mapping(source = "estado.idEstado", target = "idEstado")
-	Entregas toDomain(EntregasEntity entity);
+	@Mapping(source = "pedidoEntrega.idPedido", target = "idPedido")
+    @Mapping(source = "estadoEntrega.idEstado", target = "idEstado")
+    Entregas toDomain(EntregasEntity entity);
 
-	@Mapping(target = "pedido.idPedido", source = "idPedido")
-	@Mapping(target = "estado.idEstado", source = "idEstado")
-	EntregasEntity toEntity(Entregas entregas);
+    @Mapping(source = "idPedido", target = "pedidoEntrega.idPedido")
+    @Mapping(source = "idEstado", target = "estadoEntrega.idEstado")
+    EntregasEntity toEntity(Entregas entregas);
 }
