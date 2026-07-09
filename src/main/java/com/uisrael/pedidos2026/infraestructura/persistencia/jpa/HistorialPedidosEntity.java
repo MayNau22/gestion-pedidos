@@ -18,7 +18,6 @@ public class HistorialPedidosEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idHistorial;
-	private int idPedido;
 	private int idEstadoAnterior;
 	private int idEstadoNuevo;
 	private String observacion;
@@ -26,15 +25,8 @@ public class HistorialPedidosEntity {
 	private int usuarioModifica;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPedido") 
-	private PedidosEntity fkPedidosEntity;
-	
-	@ManyToOne
-	@JoinColumn(name = "idHistorial")
-	private UsuariosEntity fkUsuariosHistorialPedidoEntity;
-	
-	@ManyToOne
-	@JoinColumn(name = "idUsuario") 
-	private UsuariosEntity fkUsuariosHistorialPedidosEntity;
+	@JoinColumn(name = "id_pedido") 
+	private PedidosEntity pedido;
+
 
 }

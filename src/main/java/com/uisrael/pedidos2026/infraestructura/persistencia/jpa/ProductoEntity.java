@@ -28,7 +28,12 @@ public class ProductoEntity {
 	private CategoriaEntity categoria; 
 	
 	@OneToMany(mappedBy = "producto")
-	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
+	private List<DetalleCarritoEntity> detalleCarritos = new ArrayList<>();
+	
+	
+	@OneToMany(mappedBy ="detallePedido" )
+	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>() ;
+
 
    
  
