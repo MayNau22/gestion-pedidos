@@ -21,7 +21,7 @@ public class UsuarioRolesEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	private UsuariosEntity usuarioRol;
+	private UsuarioEntity usuarioRol;
 	
 	
 	@ManyToOne

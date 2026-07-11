@@ -28,6 +28,6 @@ public class CarritoEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private UsuariosEntity usuarioCarrito;
+	private UsuarioEntity usuarioCarrito;
 
 }

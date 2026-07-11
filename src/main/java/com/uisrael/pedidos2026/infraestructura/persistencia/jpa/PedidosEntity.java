@@ -39,7 +39,7 @@ public class PedidosEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private UsuariosEntity usuarioPedido;
+	private UsuarioEntity usuarioPedido;
 	
 	
 	@ManyToOne
