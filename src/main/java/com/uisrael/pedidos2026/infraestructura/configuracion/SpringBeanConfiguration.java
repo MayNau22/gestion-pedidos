@@ -25,15 +25,9 @@ import com.uisrael.pedidos2026.dominio.repositorios.IComprobantesPagoRepositorio
 import com.uisrael.pedidos2026.dominio.repositorios.IEntregasRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IEstadosGeneralesRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
-import com.uisrael.pedidos2026.dominio.repositorios.IProductoRepositorio;
+
 import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
-import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.ProductoRepositorioImpl;
-import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.UsuarioRepositorioImpl;
-import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IProductoJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IUsuarioRolJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioRolJpaRepositorio;
+
 
 @Configuration
 public class SpringBeanConfiguration {

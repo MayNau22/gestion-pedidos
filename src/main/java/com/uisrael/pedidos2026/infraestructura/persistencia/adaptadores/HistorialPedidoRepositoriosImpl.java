@@ -17,11 +17,6 @@ public class HistorialPedidoRepositoriosImpl implements IHistorialPedidoReposito
 
 	private final IHistorialPedidosJpaRepositorios jpaRepositorio;
 	private final IHistorialPedidosJpaMapper entityMapper;
-	
-
-
-
-
 	public HistorialPedidoRepositoriosImpl(IHistorialPedidosJpaRepositorios jpaRepositorio,
 			IHistorialPedidosJpaMapper entityMapper) {
 		super();

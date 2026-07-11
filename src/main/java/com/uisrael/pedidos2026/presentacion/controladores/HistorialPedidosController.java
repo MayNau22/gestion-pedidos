@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidosUseCase;
+import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidoUseCase;
 import com.uisrael.pedidos2026.presentacion.dto.request.HistorialPedidosRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.response.HistorialPedidosResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IHistorialPedidosDtoMapper;
@@ -28,10 +28,10 @@ public class HistorialPedidosController {
 
 	
 
-	private final IHistorialPedidosUseCase historialPedidosUseCase;
+	private final IHistorialPedidoUseCase historialPedidosUseCase;
 	private final IHistorialPedidosDtoMapper mapper;
 	
-	public HistorialPedidosController(IHistorialPedidosUseCase historialPedidosUseCase,
+	public HistorialPedidosController(IHistorialPedidoUseCase historialPedidosUseCase,
 			IHistorialPedidosDtoMapper mapper) {
 		super();
 		this.historialPedidosUseCase = historialPedidosUseCase;
