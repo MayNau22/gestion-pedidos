@@ -2,44 +2,75 @@ package com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.uisrael.pedidos2026.dominio.entidades.Usuario;
 import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.UsuarioEntity;
-import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioJpaReposito;
+import java.util.stream.Collectors;
 
-public class UsuarioRepositorioImpl implements IUsuarioRepositorio{
-	
-	private final IUsuarioJpaReposito jpaRepositorio;
-	private final IUsuarioJpaMapper entityMapper;
+import org.springframework.stereotype.Repository;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
-	public UsuarioRepositorioImpl(IUsuarioJpaReposito jpaRepositorio, IUsuarioJpaMapper entityMapper) {
-		super();
-		this.jpaRepositorio = jpaRepositorio;
-		this.entityMapper = entityMapper;
-	}
+@Repository 
+public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 
-	@Override
-	public Usuario guardar(Usuario nuevoUsuario) {
-		UsuarioEntity entity = entityMapper.toEntity(nuevoUsuario);
-		UsuarioEntity guardado = jpaRepositorio.save(entity);
-		return entityMapper.toDomain(guardado);
-	}
+    private final IUsuarioJpaRepositorio usuarioJpaRepositorio;
 
-	@Override
-	public Optional<Usuario> buscarPorId(int idUsuario) {
-		return jpaRepositorio.findById(idUsuario).map(entityMapper::toDomain);
-	}
+    public UsuarioRepositorioImpl(IUsuarioJpaRepositorio usuarioJpaRepositorio) {
+        this.usuarioJpaRepositorio = usuarioJpaRepositorio;
+    }
 
-	@Override
-	public List<Usuario> listarTodos() {
-		return jpaRepositorio.findAll().stream().map(entityMapper::toDomain).toList();
-	}
+    @Override
+    public Usuario guardar(Usuario nuevoUsuario) {
+        UsuarioEntity entity = mapToEntity(nuevoUsuario);
+        UsuarioEntity guardado = usuarioJpaRepositorio.save(entity);
+        return mapToDomain(guardado);
+    }
 
-	@Override
-	public void eliminar(int idUsuario) {
-		jpaRepositorio.deleteById(idUsuario);
-	}
+    @Override
+    public Optional<Usuario> buscarPorId(int idUsuario) {
+        return usuarioJpaRepositorio.findById(idUsuario)
+                .map(this::mapToDomain);
+    }
 
+    @Override
+    public List<Usuario> listarTodos() {
+        return usuarioJpaRepositorio.findAll().stream()
+                .map(this::mapToDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void eliminar(int idUsuario) {
+        usuarioJpaRepositorio.deleteById(idUsuario);
+    }
+
+    
+    private UsuarioEntity mapToEntity(Usuario dominio) {
+        UsuarioEntity entity = new UsuarioEntity();
+        entity.setIdUsuario(dominio.getIdUsuario());
+        entity.setCedula(dominio.getCedula());
+        entity.setNombre(dominio.getNombre());
+        entity.setApellido(dominio.getApellido());
+        entity.setCorreo(dominio.getCorreo());
+        entity.setContrasena(dominio.getContrasena());
+        entity.setCelular(dominio.getCelular());
+        entity.setEstado(dominio.getEstado());
+        entity.setFechaRegistro(dominio.getFechaRegistro());
+        return entity;
+    }
+
+    private Usuario mapToDomain(UsuarioEntity entity) {
+        return new Usuario(
+            entity.getIdUsuario(),
+            entity.getCedula(),
+            entity.getNombre(),
+            entity.getApellido(),
+            entity.getCorreo(),
+            entity.getContrasena(),
+            entity.getCelular(),
+            entity.getEstado(),
+            entity.getFechaRegistro()
+        );
+    }
 }
+

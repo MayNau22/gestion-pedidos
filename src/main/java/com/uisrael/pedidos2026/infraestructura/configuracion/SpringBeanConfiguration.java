@@ -44,10 +44,6 @@ public class SpringBeanConfiguration {
 		return new UsuarioUseCaseImpl(usuarioRepositorio);
 	}
 	
-	@Bean
-	IUsuarioRepositorio usuarioRepositorio(IUsuarioJpaReposito jpaRepositorio, IUsuarioJpaMapper mapper) {
-		return new UsuarioRepositorioImpl(jpaRepositorio, mapper);
-	}
 
 	@Bean
 	ICarritoUseCase carritoUseCase(ICarritoRepositorio carritoRepositorio) {
