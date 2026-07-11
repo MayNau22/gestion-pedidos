@@ -17,13 +17,17 @@ public class DetallePedidoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDetallePedido;
 
-	private int idProducto;
 	private int cantidad;
 	private double precioUnitario;
 	private double subtotal;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPedido") 
-	private PedidosEntity fkPedidosEntity;
+	@JoinColumn(name = "id_pedido") 
+	private PedidosEntity pedido;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_producto") 
+	private ProductoEntity detallePedido;
+
 
 }

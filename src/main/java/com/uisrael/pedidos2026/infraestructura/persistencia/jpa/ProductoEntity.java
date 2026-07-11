@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "productos")
 public class ProductoEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProducto;
@@ -28,7 +28,13 @@ public class ProductoEntity {
 	private CategoriaEntity categoria; 
 	
 	@OneToMany(mappedBy = "producto")
-	private List<DetalleCarritoEntity> detalleCarrito = new ArrayList<>();
+	private List<DetalleCarritoEntity> detalleCarritos = new ArrayList<>();
+	
+	
+	@OneToMany(mappedBy ="detallePedido" )
+	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>() ;
+
+
    
  
 }

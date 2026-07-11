@@ -26,11 +26,14 @@ public class EstadosGeneralesEntity {
 	private String activo; 
 
 
-	
-	@OneToMany(mappedBy = "fkEstadosGeneralesEntregasEntity")
+	@OneToMany(mappedBy = "estadoEntrega")
 	private List<EntregasEntity> entregasentity=new ArrayList<>();
 	
-	@OneToMany(mappedBy = "fkEstadosGeneralesComprobantesPagoEntity")
+	@OneToMany(mappedBy = "estadoComprobante")
 	private List<ComprobantesPagoEntity> comprobantespagoentity=new ArrayList<>();
 	
+	@OneToMany(mappedBy = "estadoPedido")
+	private List<PedidosEntity> pedidosentity=new ArrayList<>();
+
 }
+

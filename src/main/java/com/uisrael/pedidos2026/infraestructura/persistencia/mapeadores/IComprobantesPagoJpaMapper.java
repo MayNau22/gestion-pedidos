@@ -7,9 +7,14 @@ import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.ComprobantesPago
 
 @Mapper(componentModel = "spring")
 public interface IComprobantesPagoJpaMapper {
-	
-	
+
+
+	@Mapping(source = "pedidoComprobante.idPedido", target = "idPedido")
+	@Mapping(source = "estadoComprobante.idEstado", target = "idEstado")
 	ComprobantesPago toDomain(ComprobantesPagoEntity entity);
+
+	@Mapping(source = "idPedido", target = "pedidoComprobante.idPedido")
+	@Mapping(source = "idEstado", target = "estadoComprobante.idEstado")
 
 	ComprobantesPagoEntity toEntity(ComprobantesPago comprobantesPago);
 }

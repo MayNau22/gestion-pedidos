@@ -25,39 +25,48 @@ import com.uisrael.pedidos2026.dominio.repositorios.IComprobantesPagoRepositorio
 import com.uisrael.pedidos2026.dominio.repositorios.IEntregasRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IEstadosGeneralesRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
+import com.uisrael.pedidos2026.dominio.repositorios.IProductoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
+import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.ProductoRepositorioImpl;
+import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.UsuarioRepositorioImpl;
+import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IProductoJpaMapper;
+import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
+import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IUsuarioRolJpaMapper;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioRolJpaRepositorio;
 
 @Configuration
 public class SpringBeanConfiguration {
 
-    @Bean
-    public IUsuarioUseCase usuarioUseCase(IUsuarioRepositorio usuarioRepositorio) {
-        return new UsuarioUseCaseImpl(usuarioRepositorio);
-    }
+	@Bean
+	IUsuarioUseCase usuarioUseCase(IUsuarioRepositorio usuarioRepositorio) {
+		return new UsuarioUseCaseImpl(usuarioRepositorio);
+	}
+	
 
-    @Bean
-    public ICarritoUseCase carritoUseCase(ICarritoRepositorio carritoRepositorio) {
-        return new CarritoUseCaseImpl(carritoRepositorio);
-    }
+	@Bean
+	ICarritoUseCase carritoUseCase(ICarritoRepositorio carritoRepositorio) {
+		return new CarritoUseCaseImpl(carritoRepositorio);
+	}
 
-    @Bean
-    public IHistorialPedidoUseCase historialPedidoUseCase(IHistorialPedidoRepositorio historialPedidoRepositorio) {
-        return new HistorialPedidoUseCaseImpl(historialPedidoRepositorio);
-    }
+	@Bean
+	IHistorialPedidoUseCase historialPedidoUseCase(IHistorialPedidoRepositorio historialPedidoRepositorio) {
+		return new HistorialPedidoUseCaseImpl(historialPedidoRepositorio);
+	}
 
-    @Bean
-    public IEstadosGeneralesUseCase estadosGeneralesUseCase(IEstadosGeneralesRepositorio estadosGeneralesRepositorio) {
-        return new EstadosGeneralesUseCaseImpl(estadosGeneralesRepositorio);
-    }
+	@Bean
+	IEstadosGeneralesUseCase estadosGeneralesUseCase(IEstadosGeneralesRepositorio estadosGeneralesRepositorio) {
+		return new EstadosGeneralesUseCaseImpl(estadosGeneralesRepositorio);
+	}
 
-    @Bean
-    public IEntregasUseCase entregasUseCase(IEntregasRepositorio entregasRepositorio) {
-        return new EntregasUseCaseImpl(entregasRepositorio);
-    }
+	@Bean
+	IEntregasUseCase entregasUseCase(IEntregasRepositorio entregasRepositorio) {
+		return new EntregasUseCaseImpl(entregasRepositorio);
+	}
 
-    @Bean
-    public IComprobantesPagoUseCase comprobantesPagoUseCase(IComprobantesPagoRepositorio comprobantesPagoRepositorio) {
-        return new ComprobantesPagoUseCaseImpl(comprobantesPagoRepositorio);
-    }
-    
+	@Bean
+	IComprobantesPagoUseCase comprobantesPagoUseCase(IComprobantesPagoRepositorio comprobantesPagoRepositorio) {
+		return new ComprobantesPagoUseCaseImpl(comprobantesPagoRepositorio);
+	}
+
 }

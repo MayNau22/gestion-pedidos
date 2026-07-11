@@ -5,11 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 import lombok.Data;
 
 @Data
@@ -19,18 +18,20 @@ public class EntregasEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idEntrega; 
-	
+	private int idEntrega;
+
+	private String tipoEntrega;
+	private String recibidoPor;
+	private String evidenciaEntregaUrl;
+	private String observacion;
+	private Date fechaEntregaReal;
+
+	@ManyToOne
+	@JoinColumn(name = "id_pedido")
+	private PedidosEntity pedidoEntrega;
 	
 	@ManyToOne
-
-	@JoinColumn(name = "id_estado", referencedColumnName = "idEstado")
-	private EstadosGeneralesEntity estado;
-	
-	private String tipoEntrega; 
-	private String recibidoPor; 
-	private String evidenciaEntregaUrl; 
-	private String observacion; 
-	private Date fechaEntregaReal; 
+	@JoinColumn(name = "id_estado")
+	private EstadosGeneralesEntity estadoEntrega;
 	
 }
