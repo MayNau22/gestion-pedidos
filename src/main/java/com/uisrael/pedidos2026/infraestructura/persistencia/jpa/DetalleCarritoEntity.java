@@ -26,4 +26,5 @@ public class DetalleCarritoEntity {
 	@JoinColumn(name="id_producto")
 	private ProductoEntity producto;
 
+
 }

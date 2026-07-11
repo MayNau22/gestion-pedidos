@@ -22,16 +22,14 @@ public class PedidosEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPedido;
-	
+	private int idPedido; //
+	private Date fechaPedido; //
+	private Date fechaEntrega; //
+	private String direccionEntrega; //
+	private String observacion; //
+	private Double total; //
 
-	private int idEstado;
-	private Date fechaPedido;
-	private Date fechaEntrega;
-	private String direccionEntrega;
-	private String observacion;
-	private Double total;
-	
+
 	@OneToMany(mappedBy = "fkPedidosEntity")
 	private List<DetallePedidoEntity> detallePedidoEntity=new ArrayList<>();
 
@@ -46,5 +44,6 @@ public class PedidosEntity {
 	@JoinColumn(name = "idUsuario")
 	private UsuariosEntity fkUsuariosPedidoEntity;
 	
+
 
 }

@@ -18,13 +18,14 @@ public class EstadosGeneralesEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int  idEstado;
+	private int idEstado; 
 	
-	private String tipoEstado;
-	private String nombre;
-	private String descripcion;
-	private String activo;
+	private String tipoEstado; 
+	private String nombre; 
+	private String descripcion; 
+	private String activo; 
 
+<<<<<<< HEAD
 	
 	@OneToMany(mappedBy = "fkEstadosGeneralesEntregasEntity")
 	private List<EntregasEntity> entregasentity=new ArrayList<>();
@@ -33,3 +34,6 @@ public class EstadosGeneralesEntity {
 	private List<ComprobantesPagoEntity> comprobantespagoentity=new ArrayList<>();
 	
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git

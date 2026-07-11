@@ -3,37 +3,42 @@ package com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores;
 import java.util.List;
 import java.util.Optional;
 
-import com.uisrael.pedidos2026.dominio.entidades.HistorialPedido;
+import com.uisrael.pedidos2026.dominio.entidades.HistorialPedidos;
 import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.HistorialPedidosEntity;
-import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IHistorialPedidoJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IHistorialPedidoJpaRepositorio;
+import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IHistorialPedidosJpaMapper;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IHistorialPedidosJpaRepositorios;
 
 public class HistorialPedidoRepositoriosImpl implements IHistorialPedidoRepositorio {
 
-	private final IHistorialPedidoJpaRepositorio jpaRepositorio;
-	private final IHistorialPedidoJpaMapper entityMapper;
+	private final IHistorialPedidosJpaRepositorios jpaRepositorio;
+	private final IHistorialPedidosJpaMapper entityMapper;
 	
-	public HistorialPedidoRepositoriosImpl(IHistorialPedidoJpaRepositorio jpaRepositorio, IHistorialPedidoJpaMapper entityMapper) {
+
+
+
+
+	public HistorialPedidoRepositoriosImpl(IHistorialPedidosJpaRepositorios jpaRepositorio,
+			IHistorialPedidosJpaMapper entityMapper) {
 		super();
 		this.jpaRepositorio = jpaRepositorio;
 		this.entityMapper = entityMapper;
 	}
 
 	@Override
-	public HistorialPedido guardar(HistorialPedido nuevoHistorial) {
+	public HistorialPedidos guardar(HistorialPedidos nuevoHistorial) {
 		HistorialPedidosEntity entity = entityMapper.toEntity(nuevoHistorial);
 		HistorialPedidosEntity guardado = jpaRepositorio.save(entity);
 		return entityMapper.toDomain(guardado);
 	}
 
 	@Override
-	public Optional<HistorialPedido> buscarPorId(int idHistorial) {
+	public Optional<HistorialPedidos> buscarPorId(int idHistorial) {
 		return jpaRepositorio.findById(idHistorial).map(entityMapper::toDomain);
 	}
 
 	@Override
-	public List<HistorialPedido> listarTodos() {
+	public List<HistorialPedidos> listarTodos() {
 		return jpaRepositorio.findAll().stream().map(entityMapper::toDomain).toList();
 	}
 

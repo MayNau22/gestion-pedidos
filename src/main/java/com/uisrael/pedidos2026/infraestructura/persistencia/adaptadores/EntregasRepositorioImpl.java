@@ -2,12 +2,14 @@ package com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Repository; 
 import com.uisrael.pedidos2026.dominio.entidades.Entregas;
 import com.uisrael.pedidos2026.dominio.repositorios.IEntregasRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EntregasEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IEntregasJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEntregasJpaRepositorio;
 
+@Repository 
 public class EntregasRepositorioImpl implements IEntregasRepositorio {
 
 	private final IEntregasJpaRepositorio jpaRepositorio;
@@ -33,7 +35,9 @@ public class EntregasRepositorioImpl implements IEntregasRepositorio {
 
 	@Override
 	public List<Entregas> listarTodos() {
-		return jpaRepositorio.findAll().stream().map(entityMapper::toDomain).toList();
+		return jpaRepositorio.findAll().stream()
+				.map(entityMapper::toDomain)
+				.toList();
 	}
 
 	@Override

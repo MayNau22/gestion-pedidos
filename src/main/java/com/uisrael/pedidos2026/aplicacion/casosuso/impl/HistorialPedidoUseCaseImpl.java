@@ -2,7 +2,7 @@ package com.uisrael.pedidos2026.aplicacion.casosuso.impl;
 
 import java.util.List;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidoUseCase;
-import com.uisrael.pedidos2026.dominio.entidades.HistorialPedido;
+import com.uisrael.pedidos2026.dominio.entidades.HistorialPedidos;
 import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
 
 public class HistorialPedidoUseCaseImpl implements IHistorialPedidoUseCase {
@@ -15,18 +15,18 @@ public class HistorialPedidoUseCaseImpl implements IHistorialPedidoUseCase {
 	}
 
 	@Override
-	public HistorialPedido guardar(HistorialPedido nuevoHistorial) {
+	public HistorialPedidos guardar(HistorialPedidos nuevoHistorial) {
 		return repositorio.guardar(nuevoHistorial);
 	}
 
 	@Override
-	public HistorialPedido buscarPorId(int idHistorial) {
+	public HistorialPedidos buscarPorId(int idHistorial) {
 		return repositorio.buscarPorId(idHistorial)
 				.orElseThrow(() -> new RuntimeException("Historial de pedido no encontrado"));
 	}
 
 	@Override
-	public List<HistorialPedido> listarTodos() {
+	public List<HistorialPedidos> listarTodos() {
 		return repositorio.listarTodos();
 	}
 

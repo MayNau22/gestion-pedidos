@@ -1,13 +1,14 @@
-package com.uisrael.pedidos2026.dominio.repositorios;
+package com.uisrael.pedidos2026.aplicacion.casosuso.entrada;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.uisrael.pedidos2026.dominio.entidades.HistorialPedidos;
 
-public interface IHistorialPedidosRepositorio {
+public interface IHistorialPedidosUseCase {
+
 	HistorialPedidos guardar(HistorialPedidos nuevoHistorialPedidos);
-	Optional<HistorialPedidos> buscarPorId(int idHistorialPedidos);
+	HistorialPedidos buscarPorId(int idHistorialPedidos);
 	List<HistorialPedidos> listarTodos();
 	void eliminar (int idHistorialPedidos);
+	
 }
