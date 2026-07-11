@@ -7,21 +7,16 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.uisrael.pedidos2026.dominio.entidades.HistorialPedidos;
-import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidosRepositorio;
+import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.HistorialPedidosEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IHistorialPedidosJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IHistorialPedidosJpaRepositorios;
 
 
-public class HistorialPedidoRepositoriosImpl implements IHistorialPedidosRepositorio {
+public class HistorialPedidoRepositoriosImpl implements IHistorialPedidoRepositorio {
 
 	private final IHistorialPedidosJpaRepositorios jpaRepositorio;
 	private final IHistorialPedidosJpaMapper entityMapper;
-	
-
-
-
-
 	public HistorialPedidoRepositoriosImpl(IHistorialPedidosJpaRepositorios jpaRepositorio,
 			IHistorialPedidosJpaMapper entityMapper) {
 		super();

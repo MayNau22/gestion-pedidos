@@ -9,7 +9,7 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IComprobantesPagoUseC
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IDetallePedidosUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEntregasUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEstadosGeneralesUseCase;
-import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidosUseCase;
+import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidoUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IPedidosUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IProductoUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IUsuarioUseCase;
@@ -18,7 +18,7 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.impl.ComprobantesPagoUseCaseI
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.DetallePedidosUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.EntregasUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.EstadosGeneralesUseCaseImpl;
-import com.uisrael.pedidos2026.aplicacion.casosuso.impl.HistorialPedidosUseCaseImpl;
+import com.uisrael.pedidos2026.aplicacion.casosuso.impl.HistorialPedidoUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.PedidosUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.ProductoUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.UsuarioUseCaseImpl;
@@ -27,7 +27,7 @@ import com.uisrael.pedidos2026.dominio.repositorios.IComprobantesPagoRepositorio
 import com.uisrael.pedidos2026.dominio.repositorios.IDetallePedidosRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IEntregasRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IEstadosGeneralesRepositorio;
-import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidosRepositorio;
+import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IPedidosRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IProductoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
@@ -94,14 +94,14 @@ public class Pedidos2026Config {
 	}
 	
 	@Bean
-	IHistorialPedidosRepositorio historialPedidosRepositorio(IHistorialPedidosJpaRepositorios jpaRepositorios,IHistorialPedidosJpaMapper mapper) {
+	IHistorialPedidoRepositorio historialPedidosRepositorio(IHistorialPedidosJpaRepositorios jpaRepositorios,IHistorialPedidosJpaMapper mapper) {
 		return new HistorialPedidoRepositoriosImpl(jpaRepositorios, mapper);
 	}
 	
 
 	@Bean
-	IHistorialPedidosUseCase historialPedidosUseCase(IHistorialPedidosRepositorio repoUsecase) {
-		return new HistorialPedidosUseCaseImpl(repoUsecase);
+	IHistorialPedidoUseCase historialPedidosUseCase(IHistorialPedidoRepositorio repoUsecase) {
+		return new HistorialPedidoUseCaseImpl(repoUsecase);
 	}
 
 	
