@@ -21,29 +21,9 @@ public class EntregasEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEntrega; 
 	
-<<<<<<< HEAD
-	private String tipoEntrega;
-	private String recibidoPor;
-	private String evidenciaEntregaUrl;
-	private String observacion;
-	private Date fechaEntregaReal;
-=======
-	@ManyToOne
-	@JoinColumn(name = "id_pedido", referencedColumnName = "idPedido")
-	private PedidosEntity pedido;
->>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
 	
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinColumn(name = "idPedido")
-	private PedidosEntity fkPedidosEntregaEntity;
-	
-	@ManyToOne
-	@JoinColumn(name = "idEstado")
-	private EstadosGeneralesEntity fkEstadosGeneralesEntregasEntity;
-	
-}
-=======
+
 	@JoinColumn(name = "id_estado", referencedColumnName = "idEstado")
 	private EstadosGeneralesEntity estado;
 	
@@ -54,4 +34,3 @@ public class EntregasEntity {
 	private Date fechaEntregaReal; 
 	
 }
->>>>>>> branch 'master' of https://github.com/MayNau22/gestion-pedidos.git
