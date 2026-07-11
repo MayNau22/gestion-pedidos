@@ -14,6 +14,14 @@ public class Categoria {
 		this.descripcion = descripcion;
 		this.estado = estado;
 	}
+	
+	
+
+	public Categoria() {
+		super();
+	}
+
+
 
 	public int getIdCategoria() {
 		return idCategoria;

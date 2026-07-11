@@ -27,11 +27,7 @@ public class UsuarioEntity {
 	private String celular;
 	private String estado;
 	private Date fechaRegistro;
-	
-	
-	@OneToMany(mappedBy = "usuarioCarrito")
-	private List<CarritoEntity> carrito= 
-	new ArrayList<>();
+
 	
 	
 	@OneToMany(mappedBy = "usuarioPedido")

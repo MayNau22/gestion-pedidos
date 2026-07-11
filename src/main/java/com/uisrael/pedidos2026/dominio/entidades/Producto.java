@@ -27,6 +27,14 @@ public class Producto {
 		this.disponible = disponible;
 		this.fechaCreacion = fechaCreacion;
 	}
+	
+	
+
+	public Producto() {
+		super();
+	}
+
+
 
 	public int getIdProducto() {
 		return idProducto;

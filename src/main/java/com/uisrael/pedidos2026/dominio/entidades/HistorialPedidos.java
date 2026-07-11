@@ -24,6 +24,8 @@ public class HistorialPedidos {
 		this.fecha = fecha;
 		this.usuarioModifica = usuarioModifica;
 	}
+	
+	
 
 
 	public HistorialPedidos() {

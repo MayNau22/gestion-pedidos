@@ -18,6 +18,14 @@ public class EstadosGenerales {
 		this.descripcion = descripcion;
 		this.activo = activo;
 	}
+	
+	
+
+	public EstadosGenerales() {
+		super();
+	}
+
+
 
 	public int getIdEstado() {
 		return idEstado;

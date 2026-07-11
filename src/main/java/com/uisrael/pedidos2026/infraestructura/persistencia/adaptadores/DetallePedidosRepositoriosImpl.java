@@ -7,7 +7,6 @@ import com.uisrael.pedidos2026.dominio.entidades.DetallePedidos;
 import com.uisrael.pedidos2026.dominio.repositorios.IDetallePedidosRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.DetallePedidoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IDetallePedidosJpaMapper;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IDetalleCarritoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IDetallePedidosJpaRepositorios;
 
 public class DetallePedidosRepositoriosImpl implements IDetallePedidosRepositorio {

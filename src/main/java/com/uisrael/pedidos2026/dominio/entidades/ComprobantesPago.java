@@ -25,6 +25,14 @@ public class ComprobantesPago {
 		this.idEstado = idEstado;
 		this.observacion = observacion;
 	}
+	
+	
+
+	public ComprobantesPago() {
+		super();
+	}
+
+
 
 	public int getIdComprobante() {
 		return idComprobante;

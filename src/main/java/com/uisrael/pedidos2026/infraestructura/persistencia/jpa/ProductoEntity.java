@@ -27,9 +27,6 @@ public class ProductoEntity {
 	@JoinColumn(name = "id_categoria")
 	private CategoriaEntity categoria; 
 	
-	@OneToMany(mappedBy = "producto")
-	private List<DetalleCarritoEntity> detalleCarritos = new ArrayList<>();
-	
 	
 	@OneToMany(mappedBy ="detallePedido" )
 	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>() ;

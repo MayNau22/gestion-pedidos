@@ -25,6 +25,14 @@ public class Entregas {
 		this.observacion = observacion;
 		this.fechaEntregaReal = fechaEntregaReal;
 	}
+	
+	
+
+	public Entregas() {
+		super();
+	}
+
+
 
 	public int getIdEntrega() {
 		return idEntrega;

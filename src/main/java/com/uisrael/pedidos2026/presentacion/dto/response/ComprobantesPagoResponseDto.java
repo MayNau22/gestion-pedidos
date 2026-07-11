@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class ComprobantesPagoResponseDto {
+	
     private int idComprobante;
     private int idPedido;
     private String tipoPago;
@@ -13,4 +14,6 @@ public class ComprobantesPagoResponseDto {
     private Date fechaSubida;
     private int idEstado;
     private String observacion;
+    
+    
 }
