@@ -9,5 +9,6 @@ import java.util.List;
 public interface IProductoJpaRepositorio extends JpaRepository<ProductoEntity, Integer> {
 	
 	List<ProductoEntity> findByNombre(String nombre);
+	List<ProductoEntity> findByDisponibleTrue();
 
 }

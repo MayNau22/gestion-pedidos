@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -43,14 +45,47 @@ public class ProductoController {
 		return productoUseCase.listarProductos().stream().map(mapper :: toResponseDto).toList();
 	}
 	
+	@DeleteMapping("/{idProducto}")
 	public ResponseEntity<Void> eliminar(@PathVariable int idProducto){
 		productoUseCase.eliminar(idProducto);
 		return ResponseEntity.noContent().build();	
 		}
 	
-	@GetMapping("/{nombre}")
+	@GetMapping("/nombre/{nombre}")
 	public List<ProductoResponseDto> findByNombre(@PathVariable String nombre){
 		return productoUseCase.findByNombre(nombre).stream().map(mapper :: toResponseDto).toList();
 	}
+	
+	@PutMapping("/activar/{idProducto}")
+	public ResponseEntity<Void> activar(
+	        @PathVariable int idProducto){
 
+	    productoUseCase.activar(idProducto);
+
+	    return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("/id/{idProducto}")
+	public ProductoResponseDto buscarPorId(
+	        @PathVariable int idProducto) {
+
+	    return mapper.toResponseDto(
+	            productoUseCase.buscarId(idProducto)
+	    );
+	}
+	
+	
+	@PutMapping("/id/{idProducto}")
+	public ProductoResponseDto actualizar(
+	        @PathVariable int idProducto,
+	        @RequestBody ProductoRequestDto productoRequestDto) {
+
+	    productoRequestDto.setIdProducto(idProducto);
+
+	    return mapper.toResponseDto(
+	            productoUseCase.actualizar(
+	                    mapper.toDomain(productoRequestDto)
+	            )
+	    );
+	}
 }

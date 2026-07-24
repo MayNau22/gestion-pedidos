@@ -36,4 +36,15 @@ public class CategoriaUseCaseImpl implements ICategoriaUseCase{
 		
 	}
 
+	@Override
+	public void activar(int idCategoria) {
+		repositorio.activar(idCategoria);
+		
+	}
+
+	@Override
+	public Categoria actualizar(Categoria categoria) {
+		return repositorio.actualizar(categoria);
+	}
+
 }

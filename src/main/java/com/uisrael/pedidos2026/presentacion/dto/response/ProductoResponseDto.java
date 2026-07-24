@@ -7,7 +7,7 @@ import java.util.Date;
 public class ProductoResponseDto {
 	
 	private int idProducto;
-	private int idCategoria;
+	private CategoriaResponseDto categoria;
 	private String nombre;
 	private String descripcion;
 	private Double precio;
@@ -16,18 +16,21 @@ public class ProductoResponseDto {
 	private boolean disponible;
 	private Date fechaCreacion;
 	
+	
+	
+	public CategoriaResponseDto getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(CategoriaResponseDto categoria) {
+		this.categoria = categoria;
+	}
 	public int getIdProducto() {
 		return idProducto;
 	}
 	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
 	}
-	public int getIdCategoria() {
-		return idCategoria;
-	}
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}

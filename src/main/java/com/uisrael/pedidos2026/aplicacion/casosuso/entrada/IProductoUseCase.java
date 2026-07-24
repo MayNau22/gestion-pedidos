@@ -12,4 +12,6 @@ public interface IProductoUseCase {
 	List<Producto> listarProductos();
 	void eliminar(int idProducto);
 	List<Producto> findByNombre(String nombre);
+	void activar(int idProducto);
+	Producto actualizar(Producto producto);
 }

@@ -39,9 +39,52 @@ public class CategoriaRepositorioImpl implements ICategoriaRepositorio{
 
 	@Override
 	public void eliminar(int idCategoria) {
-		jpaRepositorio.deleteById(idCategoria);	
+		CategoriaEntity categoria = jpaRepositorio
+	            .findById(idCategoria)
+	            .orElseThrow(() ->
+	                    new RuntimeException(
+	                            "Categoría no encontrada."
+	                    ));
+
+	    categoria.setEstado(false);
+
+	    jpaRepositorio.save(categoria);
 		
 	}
 	
+	@Override
+	public void activar(int idCategoria) {
 
+	    CategoriaEntity categoria = jpaRepositorio
+	            .findById(idCategoria)
+	            .orElseThrow(() ->
+	                    new RuntimeException(
+	                            "Categoría no encontrada."
+	                    ));
+
+	    categoria.setEstado(true);
+
+	    jpaRepositorio.save(categoria);
+	}
+
+	@Override
+	public Categoria actualizar(Categoria categoria) {
+		 CategoriaEntity existente = jpaRepositorio
+		            .findById(categoria.getIdCategoria())
+		            .orElseThrow(() ->
+		                    new RuntimeException(
+		                            "Categoría no encontrada con ID: "
+		                            + categoria.getIdCategoria()
+		                    )
+		            );
+
+		    existente.setNombre(categoria.getNombre());
+		    existente.setDescripcion(categoria.getDescripcion());
+		    
+		    CategoriaEntity actualizada =
+		            jpaRepositorio.save(existente);
+
+		    return entityMapper.toDomain(actualizada);
+	}
+	
 }

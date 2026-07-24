@@ -41,4 +41,15 @@ public class ProductoUseCaseImpl implements IProductoUseCase{
 		return repositorio.findByNombre(nombre);
 	}
 
+	@Override
+	public void activar(int idProducto) {
+		repositorio.activar(idProducto);
+		
+	}
+
+	@Override
+	public Producto actualizar(Producto producto) {
+		return repositorio.actualizar(producto);
+	}
+
 }

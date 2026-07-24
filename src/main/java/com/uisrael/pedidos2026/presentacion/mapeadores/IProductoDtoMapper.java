@@ -13,7 +13,6 @@ public interface IProductoDtoMapper {
 	@Mapping(source = "categoria", target = "categoria.idCategoria")
     Producto toDomain(ProductoRequestDto dto);
 
-    @Mapping(source = "categoria.idCategoria", target = "idCategoria")
     ProductoResponseDto toResponseDto(Producto productoPojo);
 
 }

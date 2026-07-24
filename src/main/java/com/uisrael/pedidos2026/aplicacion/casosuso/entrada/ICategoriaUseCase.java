@@ -10,5 +10,6 @@ public interface ICategoriaUseCase {
 	Categoria buscarId(int idCategoria);
 	List<Categoria> listarTodos();
 	void eliminar(int idCategoria);
-
+	void activar(int idCategoria);
+	Categoria actualizar(Categoria categoria);
 }
