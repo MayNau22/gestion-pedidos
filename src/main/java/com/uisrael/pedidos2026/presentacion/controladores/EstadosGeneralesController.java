@@ -7,7 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEstadosGeneralesUseCase;
 import com.uisrael.pedidos2026.dominio.entidades.EstadosGenerales;
@@ -51,11 +58,13 @@ public class EstadosGeneralesController {
 
     // ==================== API REST (JSON) ====================
 
-    @PostMapping("/api/estadosgenerales")
+    @GetMapping("/api/estadosgenerales")
     @ResponseBody
-    public ResponseEntity<EstadosGeneralesResponseDto> crear(@RequestBody EstadosGeneralesRequestDto dto) {
-        EstadosGenerales nuevo = useCase.guardar(mapper.toDomain(dto));
-        return new ResponseEntity<>(mapper.toResponseDto(nuevo), HttpStatus.CREATED);
+    public ResponseEntity<List<EstadosGeneralesResponseDto>> listar() {
+        List<EstadosGeneralesResponseDto> lista = useCase.listarTodos().stream()
+                .map(mapper::toResponseDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(lista);
     }
 
     @GetMapping("/api/estadosgenerales/{id}")
@@ -65,13 +74,24 @@ public class EstadosGeneralesController {
         return ResponseEntity.ok(mapper.toResponseDto(encontrado));
     }
 
-    @GetMapping("/api/estadosgenerales")
+    @PostMapping("/api/estadosgenerales")
     @ResponseBody
-    public ResponseEntity<List<EstadosGeneralesResponseDto>> listar() {
-        List<EstadosGeneralesResponseDto> lista = useCase.listarTodos().stream()
-                .map(mapper::toResponseDto)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(lista);
+    public ResponseEntity<EstadosGeneralesResponseDto> crear(@RequestBody EstadosGeneralesRequestDto dto) {
+        EstadosGenerales nuevo = useCase.guardar(mapper.toDomain(dto));
+        return new ResponseEntity<>(mapper.toResponseDto(nuevo), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/estadosgenerales/{id}")
+    @ResponseBody
+    public ResponseEntity<EstadosGeneralesResponseDto> actualizar(
+            @PathVariable int id, 
+            @RequestBody EstadosGeneralesRequestDto dto) {
+        
+        EstadosGenerales entidad = mapper.toDomain(dto);
+        entidad.setIdEstado(id); // Se asigna el ID recibido por URL a la entidad
+        EstadosGenerales actualizado = useCase.guardar(entidad);
+        
+        return ResponseEntity.ok(mapper.toResponseDto(actualizado));
     }
 
     @DeleteMapping("/api/estadosgenerales/{id}")
