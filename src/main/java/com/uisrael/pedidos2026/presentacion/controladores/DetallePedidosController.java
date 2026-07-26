@@ -17,6 +17,7 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IDetallePedidosUseCas
 import com.uisrael.pedidos2026.presentacion.dto.request.DetallePedidosRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.response.DetallePedidosResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IDetallePedidosDtoMapper;
+import com.uisrael.pedidos2026.dominio.entidades.DetallePedidos;
 
 import jakarta.validation.Valid;
 
@@ -51,6 +52,18 @@ public class DetallePedidosController {
 		return ResponseEntity.noContent().build();
 		}
 	
+	
+	@GetMapping("/{idDetallePedidos}")
+	public ResponseEntity<DetallePedidosResponseDto> buscarPorId(@PathVariable int idDetallePedidos) {
+	    try {
+	        DetallePedidos detalle = detallePedidosUseCase.buscarPorId(idDetallePedidos);
+	        return ResponseEntity.ok(mapper.toResponseDto(detalle));
+	    } catch (RuntimeException e) {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
+
 	
 
 }

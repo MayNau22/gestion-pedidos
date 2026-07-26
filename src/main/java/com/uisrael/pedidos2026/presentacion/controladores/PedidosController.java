@@ -56,5 +56,18 @@ public class PedidosController {
 		pedidosUseCase.eliminar(idPedidos);
 		return ResponseEntity.noContent().build();
 		}
+	
+	@GetMapping("/{idPedidos}")
+	public ResponseEntity<PedidosResponseDto> buscarPorId(@PathVariable int idPedidos) {
+	    try {
+	        return ResponseEntity.ok(
+	            mapper.toResponseDto(pedidosUseCase.buscarPorId(idPedidos))
+	        );
+	    } catch (RuntimeException e) {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
+	
 
 }

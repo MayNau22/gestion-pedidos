@@ -17,7 +17,7 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidoUseCa
 import com.uisrael.pedidos2026.presentacion.dto.request.HistorialPedidosRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.response.HistorialPedidosResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IHistorialPedidosDtoMapper;
-
+import com.uisrael.pedidos2026.dominio.entidades.HistorialPedidos;
 import jakarta.validation.Valid;
 
 
@@ -55,6 +55,17 @@ public class HistorialPedidosController {
 		historialPedidosUseCase.eliminar(idHistorialPedidos);
 		return ResponseEntity.noContent().build();
 		}
+	
+	@GetMapping("/{idHistorial}")
+	public ResponseEntity<HistorialPedidosResponseDto> buscarPorId(@PathVariable int idHistorial) {
+	    try {
+	        HistorialPedidos historial = historialPedidosUseCase.buscarPorId(idHistorial);
+	        return ResponseEntity.ok(mapper.toResponseDto(historial));
+	    } catch (RuntimeException e) {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
 	
 
 	
