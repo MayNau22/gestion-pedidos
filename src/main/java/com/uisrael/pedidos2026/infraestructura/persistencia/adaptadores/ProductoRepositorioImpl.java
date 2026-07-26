@@ -93,4 +93,11 @@ public class ProductoRepositorioImpl implements IProductoRepositorio {
 		return entityMapper.toDomain(actualizado);
 	}
 
+	@Override
+	public List<Producto> buscarPorCategoria(int idCategoria) {
+
+		return jpaRepositorio.findByCategoriaIdCategoriaAndDisponibleTrue(idCategoria).stream().map(entityMapper::toDomain)
+				.toList();
+	}
+
 }

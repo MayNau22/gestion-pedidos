@@ -10,5 +10,7 @@ public interface IProductoJpaRepositorio extends JpaRepository<ProductoEntity, I
 	
 	List<ProductoEntity> findByNombre(String nombre);
 	List<ProductoEntity> findByDisponibleTrue();
+	
+	List<ProductoEntity> findByCategoriaIdCategoriaAndDisponibleTrue(int idCategoria);
 
 }

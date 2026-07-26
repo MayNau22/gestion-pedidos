@@ -51,5 +51,11 @@ public class ProductoUseCaseImpl implements IProductoUseCase{
 	public Producto actualizar(Producto producto) {
 		return repositorio.actualizar(producto);
 	}
+	
+	@Override
+	public List<Producto> buscarPorCategoria(int idCategoria) {
+
+	    return repositorio.buscarPorCategoria(idCategoria);
+	}
 
 }
