@@ -1,6 +1,7 @@
 package com.uisrael.pedidos2026.dominio.entidades;
 
 import java.util.Date;
+import java.util.List;
 
 public class Usuario {
 
@@ -13,9 +14,10 @@ public class Usuario {
 	private String celular;
 	private String estado;
 	private Date fechaRegistro;
+	private List<Rol> roles;
 	
 	public Usuario(int idUsuario, String cedula, String nombre, String apellido, String correo, String contrasena,
-			String celular, String estado, Date fechaRegistro) {
+			String celular, String estado, Date fechaRegistro, List<Rol> roles) {
 		super();
 		this.idUsuario = idUsuario;
 		this.cedula = cedula;
@@ -26,10 +28,7 @@ public class Usuario {
 		this.celular = celular;
 		this.estado = estado;
 		this.fechaRegistro = fechaRegistro;
-	}
-
-	public Usuario() {
-		super();
+		this.roles = roles;
 	}
 
 	public int getIdUsuario() {
@@ -103,4 +102,15 @@ public class Usuario {
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+	
+	
+	
 }

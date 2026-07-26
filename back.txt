@@ -1,0 +1,550 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 00000059 C434:508B
+C:.
+¦   .classpath
+¦   .factorypath
+¦   .gitattributes
+¦   .gitignore
+¦   .project
+¦   back.txt
+¦   mvnw
+¦   mvnw.cmd
+¦   pom.xml
+¦   README.md
+¦   
++---.mvn
+¦   +---wrapper
+¦           maven-wrapper.properties
+¦           
++---.settings
+¦       org.eclipse.core.resources.prefs
+¦       org.eclipse.jdt.apt.core.prefs
+¦       org.eclipse.jdt.core.prefs
+¦       org.springframework.ide.eclipse.prefs
+¦       
++---JavaFiles
+¦       Categoria.java
+¦       CategoriaController.java
+¦       CategoriaEntity.java
+¦       CategoriaRepositorioImpl.java
+¦       CategoriaRequestDto.java
+¦       CategoriaResponseDto.java
+¦       CategoriaUseCaseImpl.java
+¦       ComprobantesPago.java
+¦       ComprobantesPagoController.java
+¦       ComprobantesPagoEntity.java
+¦       ComprobantesPagoRepositorioImpl.java
+¦       ComprobantesPagoRequestDto.java
+¦       ComprobantesPagoResponseDto.java
+¦       ComprobantesPagoUseCaseImpl.java
+¦       DetallePedidoEntity.java
+¦       DetallePedidos.java
+¦       DetallePedidosController.java
+¦       DetallePedidosRepositoriosImpl.java
+¦       DetallePedidosRequestDto.java
+¦       DetallePedidosResponseDto.java
+¦       DetallePedidosUseCaseImpl.java
+¦       Entregas.java
+¦       EntregasController.java
+¦       EntregasEntity.java
+¦       EntregasRepositorioImpl.java
+¦       EntregasRequestDto.java
+¦       EntregasResponseDto.java
+¦       EntregasUseCaseImpl.java
+¦       EstadosGenerales.java
+¦       EstadosGeneralesController.java
+¦       EstadosGeneralesEntity.java
+¦       EstadosGeneralesRepositorioImpl.java
+¦       EstadosGeneralesRequestDto.java
+¦       EstadosGeneralesResponseDto.java
+¦       EstadosGeneralesUseCaseImpl.java
+¦       HistorialPedidoRepositoriosImpl.java
+¦       HistorialPedidos.java
+¦       HistorialPedidosController.java
+¦       HistorialPedidosEntity.java
+¦       HistorialPedidosRequestDto.java
+¦       HistorialPedidosResponseDto.java
+¦       HistorialPedidoUseCaseImpl.java
+¦       ICategoriaDtoMapper.java
+¦       ICategoriaDtoMapperImpl.java
+¦       ICategoriaJpaMapper.java
+¦       ICategoriaJpaMapperImpl.java
+¦       ICategoriaJpaRepositorio.java
+¦       ICategoriaRepositorio.java
+¦       ICategoriaUseCase.java
+¦       IComprobantesPagoDtoMapper.java
+¦       IComprobantesPagoDtoMapperImpl.java
+¦       IComprobantesPagoJpaMapper.java
+¦       IComprobantesPagoJpaMapperImpl.java
+¦       IComprobantesPagoJpaRepositorio.java
+¦       IComprobantesPagoRepositorio.java
+¦       IComprobantesPagoUseCase.java
+¦       IDetallePedidosDtoMapper.java
+¦       IDetallePedidosDtoMapperImpl.java
+¦       IDetallePedidosJpaMapper.java
+¦       IDetallePedidosJpaMapperImpl.java
+¦       IDetallePedidosJpaRepositorios.java
+¦       IDetallePedidosRepositorio.java
+¦       IDetallePedidosUseCase.java
+¦       IEntregasDtoMapper.java
+¦       IEntregasDtoMapperImpl.java
+¦       IEntregasJpaMapper.java
+¦       IEntregasJpaMapperImpl.java
+¦       IEntregasJpaRepositorio.java
+¦       IEntregasRepositorio.java
+¦       IEntregasUseCase.java
+¦       IEstadosGeneralesDtoMapper.java
+¦       IEstadosGeneralesDtoMapperImpl.java
+¦       IEstadosGeneralesJpaMapper.java
+¦       IEstadosGeneralesJpaMapperImpl.java
+¦       IEstadosGeneralesJpaRepositorio.java
+¦       IEstadosGeneralesRepositorio.java
+¦       IEstadosGeneralesUseCase.java
+¦       IHistorialPedidoRepositorio.java
+¦       IHistorialPedidosDtoMapper.java
+¦       IHistorialPedidosDtoMapperImpl.java
+¦       IHistorialPedidosJpaMapper.java
+¦       IHistorialPedidosJpaMapperImpl.java
+¦       IHistorialPedidosJpaRepositorios.java
+¦       IHistorialPedidoUseCase.java
+¦       IPedidosDtoMapper.java
+¦       IPedidosDtoMapperImpl.java
+¦       IPedidosJpaMapper.java
+¦       IPedidosJpaMapperImpl.java
+¦       IPedidosJpaRepositorios.java
+¦       IPedidosRepositorio.java
+¦       IPedidosUseCase.java
+¦       IProductoDtoMapper.java
+¦       IProductoDtoMapperImpl.java
+¦       IProductoJpaMapper.java
+¦       IProductoJpaMapperImpl.java
+¦       IProductoJpaRepositorio.java
+¦       IProductoRepositorio.java
+¦       IProductoUseCase.java
+¦       IRolRepositorio.java
+¦       IUsuarioJpaMapper.java
+¦       IUsuarioJpaMapperImpl.java
+¦       IUsuarioJpaRepositorio.java
+¦       IUsuarioRepositorio.java
+¦       IUsuarioRolJpaMapper.java
+¦       IUsuarioRolJpaMapperImpl.java
+¦       IUsuarioRolJpaRepositorio.java
+¦       IUsuarioRolRepositorio.java
+¦       IUsuarioUseCase.java
+¦       Pedidos.java
+¦       Pedidos2026Application.java
+¦       Pedidos2026ApplicationTests.java
+¦       Pedidos2026Config.java
+¦       PedidosController.java
+¦       PedidosEntity.java
+¦       PedidosRepositoriosImpl.java
+¦       PedidosRequestDto.java
+¦       PedidosResponseDto.java
+¦       PedidosUseCaseImpl.java
+¦       Producto.java
+¦       ProductoController.java
+¦       ProductoEntity.java
+¦       ProductoRepositorioImpl.java
+¦       ProductoRequestDto.java
+¦       ProductoResponseDto.java
+¦       ProductoUseCaseImpl.java
+¦       Rol.java
+¦       RolesEntity.java
+¦       Usuario.java
+¦       UsuarioEntity.java
+¦       UsuarioRepositorioImpl.java
+¦       UsuarioRol.java
+¦       UsuarioRolesEntity.java
+¦       UsuarioRolRepositoriosImpl.java
+¦       UsuarioUseCaseImpl.java
+¦       
++---src
+¦   +---main
+¦   ¦   +---java
+¦   ¦   ¦   +---com
+¦   ¦   ¦       +---uisrael
+¦   ¦   ¦           ¦   estructura.txt
+¦   ¦   ¦           ¦   
+¦   ¦   ¦           +---pedidos2026
+¦   ¦   ¦               ¦   Pedidos2026Application.java
+¦   ¦   ¦               ¦   
+¦   ¦   ¦               +---aplicacion
+¦   ¦   ¦               ¦   +---casosuso
+¦   ¦   ¦               ¦       +---entrada
+¦   ¦   ¦               ¦       ¦       ICategoriaUseCase.java
+¦   ¦   ¦               ¦       ¦       IComprobantesPagoUseCase.java
+¦   ¦   ¦               ¦       ¦       IDetallePedidosUseCase.java
+¦   ¦   ¦               ¦       ¦       IEntregasUseCase.java
+¦   ¦   ¦               ¦       ¦       IEstadosGeneralesUseCase.java
+¦   ¦   ¦               ¦       ¦       IHistorialPedidoUseCase.java
+¦   ¦   ¦               ¦       ¦       IPedidosUseCase.java
+¦   ¦   ¦               ¦       ¦       IProductoUseCase.java
+¦   ¦   ¦               ¦       ¦       IUsuarioUseCase.java
+¦   ¦   ¦               ¦       ¦       
+¦   ¦   ¦               ¦       +---impl
+¦   ¦   ¦               ¦               CategoriaUseCaseImpl.java
+¦   ¦   ¦               ¦               ComprobantesPagoUseCaseImpl.java
+¦   ¦   ¦               ¦               DetallePedidosUseCaseImpl.java
+¦   ¦   ¦               ¦               EntregasUseCaseImpl.java
+¦   ¦   ¦               ¦               EstadosGeneralesUseCaseImpl.java
+¦   ¦   ¦               ¦               HistorialPedidoUseCaseImpl.java
+¦   ¦   ¦               ¦               PedidosUseCaseImpl.java
+¦   ¦   ¦               ¦               ProductoUseCaseImpl.java
+¦   ¦   ¦               ¦               UsuarioUseCaseImpl.java
+¦   ¦   ¦               ¦               
+¦   ¦   ¦               +---dominio
+¦   ¦   ¦               ¦   +---entidades
+¦   ¦   ¦               ¦   ¦       Categoria.java
+¦   ¦   ¦               ¦   ¦       ComprobantesPago.java
+¦   ¦   ¦               ¦   ¦       DetallePedidos.java
+¦   ¦   ¦               ¦   ¦       Entregas.java
+¦   ¦   ¦               ¦   ¦       EstadosGenerales.java
+¦   ¦   ¦               ¦   ¦       HistorialPedidos.java
+¦   ¦   ¦               ¦   ¦       Pedidos.java
+¦   ¦   ¦               ¦   ¦       Producto.java
+¦   ¦   ¦               ¦   ¦       Rol.java
+¦   ¦   ¦               ¦   ¦       Usuario.java
+¦   ¦   ¦               ¦   ¦       UsuarioRol.java
+¦   ¦   ¦               ¦   ¦       
+¦   ¦   ¦               ¦   +---repositorios
+¦   ¦   ¦               ¦           ICategoriaRepositorio.java
+¦   ¦   ¦               ¦           IComprobantesPagoRepositorio.java
+¦   ¦   ¦               ¦           IDetallePedidosRepositorio.java
+¦   ¦   ¦               ¦           IEntregasRepositorio.java
+¦   ¦   ¦               ¦           IEstadosGeneralesRepositorio.java
+¦   ¦   ¦               ¦           IHistorialPedidoRepositorio.java
+¦   ¦   ¦               ¦           IPedidosRepositorio.java
+¦   ¦   ¦               ¦           IProductoRepositorio.java
+¦   ¦   ¦               ¦           IRolRepositorio.java
+¦   ¦   ¦               ¦           IUsuarioRepositorio.java
+¦   ¦   ¦               ¦           IUsuarioRolRepositorio.java
+¦   ¦   ¦               ¦           
+¦   ¦   ¦               +---infraestructura
+¦   ¦   ¦               ¦   +---configuracion
+¦   ¦   ¦               ¦   ¦       Pedidos2026Config.java
+¦   ¦   ¦               ¦   ¦       
+¦   ¦   ¦               ¦   +---persistencia
+¦   ¦   ¦               ¦   ¦   +---adaptadores
+¦   ¦   ¦               ¦   ¦   ¦       CategoriaRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       ComprobantesPagoRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       DetallePedidosRepositoriosImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       EntregasRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       EstadosGeneralesRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       HistorialPedidoRepositoriosImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       PedidosRepositoriosImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       ProductoRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       UsuarioRepositorioImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       UsuarioRolRepositoriosImpl.java
+¦   ¦   ¦               ¦   ¦   ¦       
+¦   ¦   ¦               ¦   ¦   +---jpa
+¦   ¦   ¦               ¦   ¦   ¦       CategoriaEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       ComprobantesPagoEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       DetallePedidoEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       EntregasEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       EstadosGeneralesEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       HistorialPedidosEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       PedidosEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       ProductoEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       RolesEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       UsuarioEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       UsuarioRolesEntity.java
+¦   ¦   ¦               ¦   ¦   ¦       
+¦   ¦   ¦               ¦   ¦   +---mapeadores
+¦   ¦   ¦               ¦   ¦           ICategoriaJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IComprobantesPagoJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IDetallePedidosJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IEntregasJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IEstadosGeneralesJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IHistorialPedidosJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IPedidosJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IProductoJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IUsuarioJpaMapper.java
+¦   ¦   ¦               ¦   ¦           IUsuarioRolJpaMapper.java
+¦   ¦   ¦               ¦   ¦           
+¦   ¦   ¦               ¦   +---repositorios
+¦   ¦   ¦               ¦           ICategoriaJpaRepositorio.java
+¦   ¦   ¦               ¦           IComprobantesPagoJpaRepositorio.java
+¦   ¦   ¦               ¦           IDetallePedidosJpaRepositorios.java
+¦   ¦   ¦               ¦           IEntregasJpaRepositorio.java
+¦   ¦   ¦               ¦           IEstadosGeneralesJpaRepositorio.java
+¦   ¦   ¦               ¦           IHistorialPedidosJpaRepositorios.java
+¦   ¦   ¦               ¦           IPedidosJpaRepositorios.java
+¦   ¦   ¦               ¦           IProductoJpaRepositorio.java
+¦   ¦   ¦               ¦           IUsuarioJpaRepositorio.java
+¦   ¦   ¦               ¦           IUsuarioRolJpaRepositorio.java
+¦   ¦   ¦               ¦           
+¦   ¦   ¦               +---presentacion
+¦   ¦   ¦                   +---controladores
+¦   ¦   ¦                   ¦       CategoriaController.java
+¦   ¦   ¦                   ¦       ComprobantesPagoController.java
+¦   ¦   ¦                   ¦       DetallePedidosController.java
+¦   ¦   ¦                   ¦       EntregasController.java
+¦   ¦   ¦                   ¦       EstadosGeneralesController.java
+¦   ¦   ¦                   ¦       HistorialPedidosController.java
+¦   ¦   ¦                   ¦       PedidosController.java
+¦   ¦   ¦                   ¦       ProductoController.java
+¦   ¦   ¦                   ¦       
+¦   ¦   ¦                   +---dto
+¦   ¦   ¦                   ¦   +---request
+¦   ¦   ¦                   ¦   ¦       CategoriaRequestDto.java
+¦   ¦   ¦                   ¦   ¦       ComprobantesPagoRequestDto.java
+¦   ¦   ¦                   ¦   ¦       DetallePedidosRequestDto.java
+¦   ¦   ¦                   ¦   ¦       EntregasRequestDto.java
+¦   ¦   ¦                   ¦   ¦       EstadosGeneralesRequestDto.java
+¦   ¦   ¦                   ¦   ¦       HistorialPedidosRequestDto.java
+¦   ¦   ¦                   ¦   ¦       PedidosRequestDto.java
+¦   ¦   ¦                   ¦   ¦       ProductoRequestDto.java
+¦   ¦   ¦                   ¦   ¦       
+¦   ¦   ¦                   ¦   +---response
+¦   ¦   ¦                   ¦           CategoriaResponseDto.java
+¦   ¦   ¦                   ¦           ComprobantesPagoResponseDto.java
+¦   ¦   ¦                   ¦           DetallePedidosResponseDto.java
+¦   ¦   ¦                   ¦           EntregasResponseDto.java
+¦   ¦   ¦                   ¦           EstadosGeneralesResponseDto.java
+¦   ¦   ¦                   ¦           HistorialPedidosResponseDto.java
+¦   ¦   ¦                   ¦           PedidosResponseDto.java
+¦   ¦   ¦                   ¦           ProductoResponseDto.java
+¦   ¦   ¦                   ¦           
+¦   ¦   ¦                   +---mapeadores
+¦   ¦   ¦                           ICategoriaDtoMapper.java
+¦   ¦   ¦                           IComprobantesPagoDtoMapper.java
+¦   ¦   ¦                           IDetallePedidosDtoMapper.java
+¦   ¦   ¦                           IEntregasDtoMapper.java
+¦   ¦   ¦                           IEstadosGeneralesDtoMapper.java
+¦   ¦   ¦                           IHistorialPedidosDtoMapper.java
+¦   ¦   ¦                           IPedidosDtoMapper.java
+¦   ¦   ¦                           IProductoDtoMapper.java
+¦   ¦   ¦                           
+¦   ¦   +---resources
+¦   ¦           application.properties
+¦   ¦           
+¦   +---test
+¦       +---java
+¦           +---com
+¦               +---uisrael
+¦                   +---pedidos2026
+¦                           Pedidos2026ApplicationTests.java
+¦                           
++---target
+    +---classes
+    ¦   ¦   application.properties
+    ¦   ¦   
+    ¦   +---com
+    ¦   ¦   +---uisrael
+    ¦   ¦       ¦   estructura.txt
+    ¦   ¦       ¦   
+    ¦   ¦       +---pedidos2026
+    ¦   ¦           ¦   Pedidos2026Application.class
+    ¦   ¦           ¦   
+    ¦   ¦           +---aplicacion
+    ¦   ¦           ¦   +---casosuso
+    ¦   ¦           ¦       +---entrada
+    ¦   ¦           ¦       ¦       ICategoriaUseCase.class
+    ¦   ¦           ¦       ¦       IComprobantesPagoUseCase.class
+    ¦   ¦           ¦       ¦       IDetallePedidosUseCase.class
+    ¦   ¦           ¦       ¦       IEntregasUseCase.class
+    ¦   ¦           ¦       ¦       IEstadosGeneralesUseCase.class
+    ¦   ¦           ¦       ¦       IHistorialPedidoUseCase.class
+    ¦   ¦           ¦       ¦       IPedidosUseCase.class
+    ¦   ¦           ¦       ¦       IProductoUseCase.class
+    ¦   ¦           ¦       ¦       IUsuarioUseCase.class
+    ¦   ¦           ¦       ¦       
+    ¦   ¦           ¦       +---impl
+    ¦   ¦           ¦               CategoriaUseCaseImpl.class
+    ¦   ¦           ¦               ComprobantesPagoUseCaseImpl.class
+    ¦   ¦           ¦               DetallePedidosUseCaseImpl.class
+    ¦   ¦           ¦               EntregasUseCaseImpl.class
+    ¦   ¦           ¦               EstadosGeneralesUseCaseImpl.class
+    ¦   ¦           ¦               HistorialPedidoUseCaseImpl.class
+    ¦   ¦           ¦               PedidosUseCaseImpl.class
+    ¦   ¦           ¦               ProductoUseCaseImpl.class
+    ¦   ¦           ¦               UsuarioUseCaseImpl.class
+    ¦   ¦           ¦               
+    ¦   ¦           +---dominio
+    ¦   ¦           ¦   +---entidades
+    ¦   ¦           ¦   ¦       Categoria.class
+    ¦   ¦           ¦   ¦       ComprobantesPago.class
+    ¦   ¦           ¦   ¦       DetallePedidos.class
+    ¦   ¦           ¦   ¦       Entregas.class
+    ¦   ¦           ¦   ¦       EstadosGenerales.class
+    ¦   ¦           ¦   ¦       HistorialPedidos.class
+    ¦   ¦           ¦   ¦       Pedidos.class
+    ¦   ¦           ¦   ¦       Producto.class
+    ¦   ¦           ¦   ¦       Rol.class
+    ¦   ¦           ¦   ¦       Usuario.class
+    ¦   ¦           ¦   ¦       UsuarioRol.class
+    ¦   ¦           ¦   ¦       
+    ¦   ¦           ¦   +---repositorios
+    ¦   ¦           ¦           ICategoriaRepositorio.class
+    ¦   ¦           ¦           IComprobantesPagoRepositorio.class
+    ¦   ¦           ¦           IDetallePedidosRepositorio.class
+    ¦   ¦           ¦           IEntregasRepositorio.class
+    ¦   ¦           ¦           IEstadosGeneralesRepositorio.class
+    ¦   ¦           ¦           IHistorialPedidoRepositorio.class
+    ¦   ¦           ¦           IPedidosRepositorio.class
+    ¦   ¦           ¦           IProductoRepositorio.class
+    ¦   ¦           ¦           IRolRepositorio.class
+    ¦   ¦           ¦           IUsuarioRepositorio.class
+    ¦   ¦           ¦           IUsuarioRolRepositorio.class
+    ¦   ¦           ¦           
+    ¦   ¦           +---infraestructura
+    ¦   ¦           ¦   +---configuracion
+    ¦   ¦           ¦   ¦       Pedidos2026Config.class
+    ¦   ¦           ¦   ¦       
+    ¦   ¦           ¦   +---persistencia
+    ¦   ¦           ¦   ¦   +---adaptadores
+    ¦   ¦           ¦   ¦   ¦       CategoriaRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       ComprobantesPagoRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       DetallePedidosRepositoriosImpl.class
+    ¦   ¦           ¦   ¦   ¦       EntregasRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       EstadosGeneralesRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       HistorialPedidoRepositoriosImpl.class
+    ¦   ¦           ¦   ¦   ¦       PedidosRepositoriosImpl.class
+    ¦   ¦           ¦   ¦   ¦       ProductoRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       UsuarioRepositorioImpl.class
+    ¦   ¦           ¦   ¦   ¦       UsuarioRolRepositoriosImpl.class
+    ¦   ¦           ¦   ¦   ¦       
+    ¦   ¦           ¦   ¦   +---jpa
+    ¦   ¦           ¦   ¦   ¦       CategoriaEntity.class
+    ¦   ¦           ¦   ¦   ¦       ComprobantesPagoEntity.class
+    ¦   ¦           ¦   ¦   ¦       DetallePedidoEntity.class
+    ¦   ¦           ¦   ¦   ¦       EntregasEntity.class
+    ¦   ¦           ¦   ¦   ¦       EstadosGeneralesEntity.class
+    ¦   ¦           ¦   ¦   ¦       HistorialPedidosEntity.class
+    ¦   ¦           ¦   ¦   ¦       PedidosEntity.class
+    ¦   ¦           ¦   ¦   ¦       ProductoEntity.class
+    ¦   ¦           ¦   ¦   ¦       RolesEntity.class
+    ¦   ¦           ¦   ¦   ¦       UsuarioEntity.class
+    ¦   ¦           ¦   ¦   ¦       UsuarioRolesEntity.class
+    ¦   ¦           ¦   ¦   ¦       
+    ¦   ¦           ¦   ¦   +---mapeadores
+    ¦   ¦           ¦   ¦           ICategoriaJpaMapper.class
+    ¦   ¦           ¦   ¦           ICategoriaJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IComprobantesPagoJpaMapper.class
+    ¦   ¦           ¦   ¦           IComprobantesPagoJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IDetallePedidosJpaMapper.class
+    ¦   ¦           ¦   ¦           IDetallePedidosJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IEntregasJpaMapper.class
+    ¦   ¦           ¦   ¦           IEntregasJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IEstadosGeneralesJpaMapper.class
+    ¦   ¦           ¦   ¦           IEstadosGeneralesJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IHistorialPedidosJpaMapper.class
+    ¦   ¦           ¦   ¦           IHistorialPedidosJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IPedidosJpaMapper.class
+    ¦   ¦           ¦   ¦           IPedidosJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IProductoJpaMapper.class
+    ¦   ¦           ¦   ¦           IProductoJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IUsuarioJpaMapper.class
+    ¦   ¦           ¦   ¦           IUsuarioJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           IUsuarioRolJpaMapper.class
+    ¦   ¦           ¦   ¦           IUsuarioRolJpaMapperImpl.class
+    ¦   ¦           ¦   ¦           
+    ¦   ¦           ¦   +---repositorios
+    ¦   ¦           ¦           ICategoriaJpaRepositorio.class
+    ¦   ¦           ¦           IComprobantesPagoJpaRepositorio.class
+    ¦   ¦           ¦           IDetallePedidosJpaRepositorios.class
+    ¦   ¦           ¦           IEntregasJpaRepositorio.class
+    ¦   ¦           ¦           IEstadosGeneralesJpaRepositorio.class
+    ¦   ¦           ¦           IHistorialPedidosJpaRepositorios.class
+    ¦   ¦           ¦           IPedidosJpaRepositorios.class
+    ¦   ¦           ¦           IProductoJpaRepositorio.class
+    ¦   ¦           ¦           IUsuarioJpaRepositorio.class
+    ¦   ¦           ¦           IUsuarioRolJpaRepositorio.class
+    ¦   ¦           ¦           
+    ¦   ¦           +---presentacion
+    ¦   ¦               +---controladores
+    ¦   ¦               ¦       CategoriaController.class
+    ¦   ¦               ¦       ComprobantesPagoController.class
+    ¦   ¦               ¦       DetallePedidosController.class
+    ¦   ¦               ¦       EntregasController.class
+    ¦   ¦               ¦       EstadosGeneralesController.class
+    ¦   ¦               ¦       HistorialPedidosController.class
+    ¦   ¦               ¦       PedidosController.class
+    ¦   ¦               ¦       ProductoController.class
+    ¦   ¦               ¦       
+    ¦   ¦               +---dto
+    ¦   ¦               ¦   +---request
+    ¦   ¦               ¦   ¦       CategoriaRequestDto.class
+    ¦   ¦               ¦   ¦       ComprobantesPagoRequestDto.class
+    ¦   ¦               ¦   ¦       DetallePedidosRequestDto.class
+    ¦   ¦               ¦   ¦       EntregasRequestDto.class
+    ¦   ¦               ¦   ¦       EstadosGeneralesRequestDto.class
+    ¦   ¦               ¦   ¦       HistorialPedidosRequestDto.class
+    ¦   ¦               ¦   ¦       PedidosRequestDto.class
+    ¦   ¦               ¦   ¦       ProductoRequestDto.class
+    ¦   ¦               ¦   ¦       
+    ¦   ¦               ¦   +---response
+    ¦   ¦               ¦           CategoriaResponseDto.class
+    ¦   ¦               ¦           ComprobantesPagoResponseDto.class
+    ¦   ¦               ¦           DetallePedidosResponseDto.class
+    ¦   ¦               ¦           EntregasResponseDto.class
+    ¦   ¦               ¦           EstadosGeneralesResponseDto.class
+    ¦   ¦               ¦           HistorialPedidosResponseDto.class
+    ¦   ¦               ¦           PedidosResponseDto.class
+    ¦   ¦               ¦           ProductoResponseDto.class
+    ¦   ¦               ¦           
+    ¦   ¦               +---mapeadores
+    ¦   ¦                       ICategoriaDtoMapper.class
+    ¦   ¦                       ICategoriaDtoMapperImpl.class
+    ¦   ¦                       IComprobantesPagoDtoMapper.class
+    ¦   ¦                       IComprobantesPagoDtoMapperImpl.class
+    ¦   ¦                       IDetallePedidosDtoMapper.class
+    ¦   ¦                       IDetallePedidosDtoMapperImpl.class
+    ¦   ¦                       IEntregasDtoMapper.class
+    ¦   ¦                       IEntregasDtoMapperImpl.class
+    ¦   ¦                       IEstadosGeneralesDtoMapper.class
+    ¦   ¦                       IEstadosGeneralesDtoMapperImpl.class
+    ¦   ¦                       IHistorialPedidosDtoMapper.class
+    ¦   ¦                       IHistorialPedidosDtoMapperImpl.class
+    ¦   ¦                       IPedidosDtoMapper.class
+    ¦   ¦                       IPedidosDtoMapperImpl.class
+    ¦   ¦                       IProductoDtoMapper.class
+    ¦   ¦                       IProductoDtoMapperImpl.class
+    ¦   ¦                       
+    ¦   +---META-INF
+    ¦       ¦   MANIFEST.MF
+    ¦       ¦   
+    ¦       +---maven
+    ¦           +---com.uisrael
+    ¦               +---pedidos2026
+    ¦                       pom.properties
+    ¦                       pom.xml
+    ¦                       
+    +---generated-sources
+    ¦   +---annotations
+    ¦       +---com
+    ¦           +---uisrael
+    ¦               +---pedidos2026
+    ¦                   +---infraestructura
+    ¦                   ¦   +---persistencia
+    ¦                   ¦       +---mapeadores
+    ¦                   ¦               ICategoriaJpaMapperImpl.java
+    ¦                   ¦               IComprobantesPagoJpaMapperImpl.java
+    ¦                   ¦               IDetallePedidosJpaMapperImpl.java
+    ¦                   ¦               IEntregasJpaMapperImpl.java
+    ¦                   ¦               IEstadosGeneralesJpaMapperImpl.java
+    ¦                   ¦               IHistorialPedidosJpaMapperImpl.java
+    ¦                   ¦               IPedidosJpaMapperImpl.java
+    ¦                   ¦               IProductoJpaMapperImpl.java
+    ¦                   ¦               IUsuarioJpaMapperImpl.java
+    ¦                   ¦               IUsuarioRolJpaMapperImpl.java
+    ¦                   ¦               
+    ¦                   +---presentacion
+    ¦                       +---mapeadores
+    ¦                               ICategoriaDtoMapperImpl.java
+    ¦                               IComprobantesPagoDtoMapperImpl.java
+    ¦                               IDetallePedidosDtoMapperImpl.java
+    ¦                               IEntregasDtoMapperImpl.java
+    ¦                               IEstadosGeneralesDtoMapperImpl.java
+    ¦                               IHistorialPedidosDtoMapperImpl.java
+    ¦                               IPedidosDtoMapperImpl.java
+    ¦                               IProductoDtoMapperImpl.java
+    ¦                               
+    +---generated-test-sources
+    ¦   +---test-annotations
+    +---test-classes
+        +---com
+            +---uisrael
+                +---pedidos2026
+                        Pedidos2026ApplicationTests.class
+                        

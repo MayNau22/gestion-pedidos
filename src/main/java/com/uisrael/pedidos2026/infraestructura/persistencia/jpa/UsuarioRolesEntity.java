@@ -15,7 +15,7 @@ import lombok.Data;
 public class UsuarioRolesEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUsuarioRol; // Llave primaria autoincremental para control de JPA
+	private int idUsuarioRol; 
 	
 	
 	
@@ -25,7 +25,7 @@ public class UsuarioRolesEntity {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "id_rol")
+	@JoinColumn(name = "rol_id")
 	private RolesEntity rol;
 
 }

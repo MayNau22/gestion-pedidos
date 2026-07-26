@@ -14,7 +14,7 @@ public class CategoriaEntity {
     private int idCategoria;
     private String nombre;
     private String descripcion;
-    private String estado;
+    private boolean estado;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL) 
     private List<ProductoEntity> productos;
