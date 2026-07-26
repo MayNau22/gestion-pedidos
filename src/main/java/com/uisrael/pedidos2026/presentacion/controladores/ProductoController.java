@@ -24,68 +24,64 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/producto")
 public class ProductoController {
-	
+
 	private final IProductoUseCase productoUseCase;
 	private final IProductoDtoMapper mapper;
-	
+
 	public ProductoController(IProductoUseCase productoUseCase, IProductoDtoMapper mapper) {
 		super();
 		this.productoUseCase = productoUseCase;
 		this.mapper = mapper;
 	}
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ProductoResponseDto guardar(@Valid @RequestBody ProductoRequestDto productoRequestDto) {
 		return mapper.toResponseDto(productoUseCase.guardar(mapper.toDomain(productoRequestDto)));
 	}
-	
+
 	@GetMapping
-	public List<ProductoResponseDto> listarTodos(){
-		return productoUseCase.listarProductos().stream().map(mapper :: toResponseDto).toList();
+	public List<ProductoResponseDto> listarTodos() {
+		return productoUseCase.listarProductos().stream().map(mapper::toResponseDto).toList();
 	}
-	
+
 	@DeleteMapping("/{idProducto}")
-	public ResponseEntity<Void> eliminar(@PathVariable int idProducto){
+	public ResponseEntity<Void> eliminar(@PathVariable int idProducto) {
 		productoUseCase.eliminar(idProducto);
-		return ResponseEntity.noContent().build();	
-		}
-	
+		return ResponseEntity.noContent().build();
+	}
+
 	@GetMapping("/nombre/{nombre}")
-	public List<ProductoResponseDto> findByNombre(@PathVariable String nombre){
-		return productoUseCase.findByNombre(nombre).stream().map(mapper :: toResponseDto).toList();
+	public List<ProductoResponseDto> findByNombre(@PathVariable String nombre) {
+		return productoUseCase.findByNombre(nombre).stream().map(mapper::toResponseDto).toList();
 	}
-	
+
 	@PutMapping("/activar/{idProducto}")
-	public ResponseEntity<Void> activar(
-	        @PathVariable int idProducto){
+	public ResponseEntity<Void> activar(@PathVariable int idProducto) {
 
-	    productoUseCase.activar(idProducto);
+		productoUseCase.activar(idProducto);
 
-	    return ResponseEntity.ok().build();
+		return ResponseEntity.ok().build();
 	}
-	
+
 	@GetMapping("/id/{idProducto}")
-	public ProductoResponseDto buscarPorId(
-	        @PathVariable int idProducto) {
+	public ProductoResponseDto buscarPorId(@PathVariable int idProducto) {
 
-	    return mapper.toResponseDto(
-	            productoUseCase.buscarId(idProducto)
-	    );
+		return mapper.toResponseDto(productoUseCase.buscarId(idProducto));
 	}
-	
-	
+
 	@PutMapping("/id/{idProducto}")
-	public ProductoResponseDto actualizar(
-	        @PathVariable int idProducto,
-	        @RequestBody ProductoRequestDto productoRequestDto) {
+	public ProductoResponseDto actualizar(@PathVariable int idProducto,
+			@RequestBody ProductoRequestDto productoRequestDto) {
 
-	    productoRequestDto.setIdProducto(idProducto);
+		productoRequestDto.setIdProducto(idProducto);
 
-	    return mapper.toResponseDto(
-	            productoUseCase.actualizar(
-	                    mapper.toDomain(productoRequestDto)
-	            )
-	    );
+		return mapper.toResponseDto(productoUseCase.actualizar(mapper.toDomain(productoRequestDto)));
+	}
+
+	@GetMapping("/categoria/{idCategoria}")
+	public List<ProductoResponseDto> buscarCategoria(@PathVariable int idCategoria) {
+
+		return productoUseCase.buscarPorCategoria(idCategoria).stream().map(mapper::toResponseDto).toList();
 	}
 }

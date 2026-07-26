@@ -1,19 +1,15 @@
-package com.uisrael.pedidos2026.dominio.entidades;
+package com.uisrael.pedidos2026.presentacion.dto.response;
 
-public class Rol {
+public class RolResponseDto {
 
     private int idRol;
     private String nombre;
     private String descripcion;
 
-    public Rol() {
+    public RolResponseDto() {
     }
 
-    public Rol(
-            int idRol,
-            String nombre,
-            String descripcion) {
-
+    public RolResponseDto(int idRol, String nombre, String descripcion) {
         this.idRol = idRol;
         this.nombre = nombre;
         this.descripcion = descripcion;

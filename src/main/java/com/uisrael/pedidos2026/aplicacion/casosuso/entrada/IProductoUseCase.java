@@ -14,4 +14,5 @@ public interface IProductoUseCase {
 	List<Producto> findByNombre(String nombre);
 	void activar(int idProducto);
 	Producto actualizar(Producto producto);
+	List<Producto> buscarPorCategoria(int idCategoria);
 }
