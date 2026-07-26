@@ -2,11 +2,8 @@ package com.uisrael.pedidos2026.presentacion.controladores;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEstadosGeneralesUseCase;
@@ -15,7 +12,8 @@ import com.uisrael.pedidos2026.presentacion.dto.request.EstadosGeneralesRequestD
 import com.uisrael.pedidos2026.presentacion.dto.response.EstadosGeneralesResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IEstadosGeneralesDtoMapper;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/estados-generales")
 public class EstadosGeneralesController {
 
     private final IEstadosGeneralesUseCase useCase;
@@ -26,47 +24,19 @@ public class EstadosGeneralesController {
         this.mapper = mapper;
     }
 
-    // ==================== VISTAS THYMELEAF (HTML) ====================
-
-    @GetMapping({"/estadosgenerales", "/estadosGenerales"})
-    public String listarWeb(Model model) {
-        List<EstadosGeneralesResponseDto> lista = useCase.listarTodos().stream()
-                .map(mapper::toResponseDto)
-                .collect(Collectors.toList());
-        model.addAttribute("listaEstados", lista);
-        return "estadosGenerales/listarestadosgenerales";
-    }
-
-    @GetMapping({"/estadosgenerales/nuevo", "/estadosGenerales/nuevo"})
-    public String mostrarFormularioCrear(Model model) {
-        model.addAttribute("estadoGeneral", new EstadosGeneralesRequestDto());
-        return "estadosGenerales/crearestadogeneral";
-    }
-
-    @PostMapping({"/estadosgenerales/guardar", "/estadosGenerales/guardar"})
-    public String guardarWeb(@ModelAttribute("estadoGeneral") EstadosGeneralesRequestDto dto) {
-        useCase.guardar(mapper.toDomain(dto));
-        return "redirect:/estadosgenerales";
-    }
-
-    // ==================== API REST (JSON) ====================
-
-    @PostMapping("/api/estadosgenerales")
-    @ResponseBody
+    @PostMapping
     public ResponseEntity<EstadosGeneralesResponseDto> crear(@RequestBody EstadosGeneralesRequestDto dto) {
         EstadosGenerales nuevo = useCase.guardar(mapper.toDomain(dto));
         return new ResponseEntity<>(mapper.toResponseDto(nuevo), HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/estadosgenerales/{id}")
-    @ResponseBody
+    @GetMapping("/{id}")
     public ResponseEntity<EstadosGeneralesResponseDto> buscarPorId(@PathVariable int id) {
         EstadosGenerales encontrado = useCase.buscarPorId(id);
         return ResponseEntity.ok(mapper.toResponseDto(encontrado));
     }
 
-    @GetMapping("/api/estadosgenerales")
-    @ResponseBody
+    @GetMapping
     public ResponseEntity<List<EstadosGeneralesResponseDto>> listar() {
         List<EstadosGeneralesResponseDto> lista = useCase.listarTodos().stream()
                 .map(mapper::toResponseDto)
@@ -74,8 +44,7 @@ public class EstadosGeneralesController {
         return ResponseEntity.ok(lista);
     }
 
-    @DeleteMapping("/api/estadosgenerales/{id}")
-    @ResponseBody
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable int id) {
         useCase.eliminar(id);
         return ResponseEntity.noContent().build();
