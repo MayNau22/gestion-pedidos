@@ -39,5 +39,20 @@ public class PedidosUseCaseImpl implements IPedidosUseCase{
 		repositorio.eliminar(idPedidos);
 		
 	}
+	
+	@Override
+	public List<Pedidos> listarPorUsuario(
+	        int idUsuario) {
+
+	    if (idUsuario <= 0) {
+	        throw new RuntimeException(
+	                "El usuario es obligatorio"
+	        );
+	    }
+
+	    return repositorio.listarPorUsuario(
+	            idUsuario
+	    );
+	}
 
 }

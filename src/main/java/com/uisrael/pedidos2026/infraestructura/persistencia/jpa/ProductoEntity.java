@@ -28,7 +28,7 @@ public class ProductoEntity {
 	private CategoriaEntity categoria; 
 	
 	
-	@OneToMany(mappedBy ="detallePedido" )
+	@OneToMany(mappedBy ="producto" )
 	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>() ;
 
 

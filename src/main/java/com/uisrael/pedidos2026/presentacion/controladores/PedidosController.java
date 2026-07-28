@@ -20,54 +20,50 @@ import com.uisrael.pedidos2026.presentacion.mapeadores.IPedidosDtoMapper;
 
 import jakarta.validation.Valid;
 
-
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidosController {
-	
 
 	private final IPedidosUseCase pedidosUseCase;
 	private final IPedidosDtoMapper mapper;
-	
 
-	
 	public PedidosController(IPedidosUseCase pedidosUseCase, IPedidosDtoMapper mapper) {
 		super();
 		this.pedidosUseCase = pedidosUseCase;
 		this.mapper = mapper;
 	}
 
-
-
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PedidosResponseDto guardar(@Valid @RequestBody PedidosRequestDto pedidosRequestDto) {
 		return mapper.toResponseDto(pedidosUseCase.guardar(mapper.toDomain(pedidosRequestDto)));
 	}
-	
-	
+
 	@GetMapping
-	public List<PedidosResponseDto> listarTodo(){
-		return pedidosUseCase. listarTodos().stream().map(mapper :: toResponseDto). toList();	
+	public List<PedidosResponseDto> listarTodo() {
+		return pedidosUseCase.listarTodos().stream().map(mapper::toResponseDto).toList();
 	}
-	
+
 	@DeleteMapping("/{idPedidos}")
-	public ResponseEntity<Void> eliminar(@PathVariable int idPedidos){
+	public ResponseEntity<Void> eliminar(@PathVariable int idPedidos) {
 		pedidosUseCase.eliminar(idPedidos);
 		return ResponseEntity.noContent().build();
-		}
-	
-	@GetMapping("/{idPedidos}")
-	public ResponseEntity<PedidosResponseDto> buscarPorId(@PathVariable int idPedidos) {
-	    try {
-	        return ResponseEntity.ok(
-	            mapper.toResponseDto(pedidosUseCase.buscarPorId(idPedidos))
-	        );
-	    } catch (RuntimeException e) {
-	        return ResponseEntity.notFound().build();
-	    }
 	}
 
-	
+	@GetMapping("/{idPedidos}")
+	public ResponseEntity<PedidosResponseDto> buscarPorId(@PathVariable int idPedidos) {
+		try {
+			return ResponseEntity.ok(mapper.toResponseDto(pedidosUseCase.buscarPorId(idPedidos)));
+		} catch (RuntimeException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
 
+	@GetMapping("/usuario/{idUsuario}")
+	public List<PedidosResponseDto> listarPorUsuario(@PathVariable int idUsuario) {
+
+		return pedidosUseCase.listarPorUsuario(idUsuario).stream().map(mapper::toResponseDto).toList();
+	}
+	
+	
 }

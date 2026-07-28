@@ -3,6 +3,8 @@ package com.uisrael.pedidos2026.infraestructura.persistencia.jpa;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +19,7 @@ import lombok.Data;
 @Entity
 @Table(name = "pedidos")
 public class PedidosEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -27,25 +29,21 @@ public class PedidosEntity {
 	private String direccionEntrega;
 	private String observacion;
 	private Double total;
-	
-	@OneToMany(mappedBy = "pedido")
+
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<DetallePedidoEntity> detallePedido = new ArrayList<>();
 
-
-
 	@OneToMany(mappedBy = "pedidoEntrega")
-	private List<EntregasEntity> entregasentity=new ArrayList<>();
-	
+	private List<EntregasEntity> entregasentity = new ArrayList<>();
+
 	@OneToMany(mappedBy = "pedidoComprobante")
 	private List<ComprobantesPagoEntity> comprobantePagos = new ArrayList<>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private UsuarioEntity usuarioPedido;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
 	private EstadosGeneralesEntity estadoPedido;
 }
-

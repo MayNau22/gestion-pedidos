@@ -1,30 +1,45 @@
 package com.uisrael.pedidos2026.dominio.entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Pedidos {
-	
+
 	private int idPedido;
 	private int idUsuario;
 	private int idEstado;
+	private String nombreCliente;
+	private String celularCliente;
 	private Date fechaPedido;
 	private Date fechaEntrega;
 	private String direccionEntrega;
 	private String observacion;
 	private Double total;
-	
-	public Pedidos(int idPedido, int idUsuario, int idEstado, Date fechaPedido, Date fechaEntrega,
-			String direccionEntrega, String observacion, Double total) {
+
+	private List<DetallePedidos> detalles = new ArrayList<>();
+
+	public Pedidos() {
+	}
+
+
+	public Pedidos(int idPedido, int idUsuario, int idEstado, String nombreCliente, String celularCliente,
+			Date fechaPedido, Date fechaEntrega, String direccionEntrega, String observacion, Double total,
+			List<DetallePedidos> detalles) {
 		super();
 		this.idPedido = idPedido;
 		this.idUsuario = idUsuario;
 		this.idEstado = idEstado;
+		this.nombreCliente = nombreCliente;
+		this.celularCliente = celularCliente;
 		this.fechaPedido = fechaPedido;
 		this.fechaEntrega = fechaEntrega;
 		this.direccionEntrega = direccionEntrega;
 		this.observacion = observacion;
 		this.total = total;
+		this.detalles = detalles;
 	}
+
 
 	public int getIdPedido() {
 		return idPedido;
@@ -71,6 +86,7 @@ public class Pedidos {
 	}
 
 	public void setDireccionEntrega(String direccionEntrega) {
+
 		this.direccionEntrega = direccionEntrega;
 	}
 
@@ -79,6 +95,7 @@ public class Pedidos {
 	}
 
 	public void setObservacion(String observacion) {
+
 		this.observacion = observacion;
 	}
 
@@ -89,9 +106,29 @@ public class Pedidos {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
-	
-	
-	
-	
 
+	public List<DetallePedidos> getDetalles() {
+		return detalles;
+	}
+
+	public void setDetalles(List<DetallePedidos> detalles) {
+
+		this.detalles = detalles;
+	}
+	
+	public String getNombreCliente() {
+	    return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+	    this.nombreCliente = nombreCliente;
+	}
+
+	public String getCelularCliente() {
+	    return celularCliente;
+	}
+
+	public void setCelularCliente(String celularCliente) {
+	    this.celularCliente = celularCliente;
+	}
 }

@@ -1,5 +1,6 @@
 package com.uisrael.pedidos2026.presentacion.controladores;
 
+import org.springframework.http.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IComprobantesPagoUseCase;
 import com.uisrael.pedidos2026.dominio.entidades.ComprobantesPago;
@@ -18,66 +20,91 @@ import com.uisrael.pedidos2026.presentacion.mapeadores.IComprobantesPagoDtoMappe
 @Controller
 public class ComprobantesPagoController {
 
-    private final IComprobantesPagoUseCase useCase;
-    private final IComprobantesPagoDtoMapper mapper;
+	private final IComprobantesPagoUseCase useCase;
+	private final IComprobantesPagoDtoMapper mapper;
 
-    public ComprobantesPagoController(IComprobantesPagoUseCase useCase, IComprobantesPagoDtoMapper mapper) {
-        this.useCase = useCase;
-        this.mapper = mapper;
-    }
+	public ComprobantesPagoController(IComprobantesPagoUseCase useCase, IComprobantesPagoDtoMapper mapper) {
+		this.useCase = useCase;
+		this.mapper = mapper;
+	}
 
-    // ==================== VISTAS THYMELEAF (HTML) ====================
+	// ==================== VISTAS THYMELEAF (HTML) ====================
 
-    @GetMapping("/comprobantespago")
-    public String listarWeb(Model model) {
-        List<ComprobantesPagoResponseDto> lista = useCase.listarTodos().stream()
-                .map(mapper::toResponseDto)
-                .collect(Collectors.toList());
-        model.addAttribute("listaComprobantes", lista);
-        return "comprobantesPago/listarcomprobantespago";
-    }
+	@GetMapping("/comprobantespago")
+	public String listarWeb(Model model) {
+		List<ComprobantesPagoResponseDto> lista = useCase.listarTodos().stream().map(mapper::toResponseDto)
+				.collect(Collectors.toList());
+		model.addAttribute("listaComprobantes", lista);
+		return "comprobantesPago/listarcomprobantespago";
+	}
 
-    @GetMapping("/comprobantespago/nuevo")
-    public String mostrarFormularioCrear(Model model) {
-        model.addAttribute("comprobantepago", new ComprobantesPagoRequestDto());
-        return "comprobantesPago/crearcomprobantepago";
-    }
+	@GetMapping("/comprobantespago/nuevo")
+	public String mostrarFormularioCrear(Model model) {
+		model.addAttribute("comprobantepago", new ComprobantesPagoRequestDto());
+		return "comprobantesPago/crearcomprobantepago";
+	}
 
-    @PostMapping("/comprobantespago/guardar")
-    public String guardarWeb(@ModelAttribute("comprobantepago") ComprobantesPagoRequestDto dto) {
-        useCase.guardar(mapper.toDomain(dto));
-        return "redirect:/comprobantespago";
-    }
+	@PostMapping("/comprobantespago/guardar")
+	public String guardarWeb(@ModelAttribute("comprobantepago") ComprobantesPagoRequestDto dto) {
+		useCase.guardar(mapper.toDomain(dto));
+		return "redirect:/comprobantespago";
+	}
 
-    // ==================== API REST (JSON) ====================
+	// ==================== API REST (JSON) ====================
 
-    @PostMapping("/api/comprobantes-pago")
-    @ResponseBody
-    public ResponseEntity<ComprobantesPagoResponseDto> crear(@RequestBody ComprobantesPagoRequestDto dto) {
-        ComprobantesPago nuevo = useCase.guardar(mapper.toDomain(dto));
-        return new ResponseEntity<>(mapper.toResponseDto(nuevo), HttpStatus.CREATED);
-    }
+	@PostMapping("/api/comprobantes-pago")
+	@ResponseBody
+	public ResponseEntity<ComprobantesPagoResponseDto> crear(@RequestBody ComprobantesPagoRequestDto dto) {
+		ComprobantesPago nuevo = useCase.guardar(mapper.toDomain(dto));
+		return new ResponseEntity<>(mapper.toResponseDto(nuevo), HttpStatus.CREATED);
+	}
 
-    @GetMapping("/api/comprobantes-pago/{id}")
-    @ResponseBody
-    public ResponseEntity<ComprobantesPagoResponseDto> buscarPorId(@PathVariable int id) {
-        ComprobantesPago encontrado = useCase.buscarPorId(id);
-        return ResponseEntity.ok(mapper.toResponseDto(encontrado));
-    }
+	@GetMapping("/api/comprobantes-pago/{id}")
+	@ResponseBody
+	public ResponseEntity<ComprobantesPagoResponseDto> buscarPorId(@PathVariable int id) {
+		ComprobantesPago encontrado = useCase.buscarPorId(id);
+		return ResponseEntity.ok(mapper.toResponseDto(encontrado));
+	}
 
-    @GetMapping("/api/comprobantes-pago")
-    @ResponseBody
-    public ResponseEntity<List<ComprobantesPagoResponseDto>> listar() {
-        List<ComprobantesPagoResponseDto> lista = useCase.listarTodos().stream()
-                .map(mapper::toResponseDto)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(lista);
-    }
+	@GetMapping("/api/comprobantes-pago")
+	@ResponseBody
+	public ResponseEntity<List<ComprobantesPagoResponseDto>> listar() {
+		List<ComprobantesPagoResponseDto> lista = useCase.listarTodos().stream().map(mapper::toResponseDto)
+				.collect(Collectors.toList());
+		return ResponseEntity.ok(lista);
+	}
 
-    @DeleteMapping("/api/comprobantes-pago/{id}")
-    @ResponseBody
-    public ResponseEntity<Void> eliminar(@PathVariable int id) {
-        useCase.eliminar(id);
-        return ResponseEntity.noContent().build();
-    }
+	@DeleteMapping("/api/comprobantes-pago/{id}")
+	@ResponseBody
+	public ResponseEntity<Void> eliminar(@PathVariable int id) {
+		useCase.eliminar(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@PostMapping(value = "/api/pedidos/{idPedido}/comprobante", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@ResponseBody
+	public ResponseEntity<ComprobantesPagoResponseDto> subirComprobante(
+
+			@PathVariable int idPedido,
+
+			@RequestParam("archivo") MultipartFile archivo,
+
+			@RequestParam(value = "tipoPago", defaultValue = "ABONO_INICIAL") String tipoPago,
+
+			@RequestParam("monto") Double monto,
+
+			@RequestParam(value = "observacion", required = false) String observacion) {
+
+		ComprobantesPago comprobante = useCase.guardarArchivo(idPedido, archivo, tipoPago, monto, observacion);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponseDto(comprobante));
+	}
+
+	@GetMapping("/api/comprobantes-pago/pedido/{idPedido}")
+	@ResponseBody
+	public ResponseEntity<ComprobantesPagoResponseDto> buscarPorPedido(@PathVariable int idPedido) {
+
+		return useCase.buscarPorPedido(idPedido).map(c -> ResponseEntity.ok(mapper.toResponseDto(c)))
+				.orElseGet(() -> ResponseEntity.noContent().build());
+	}
 }

@@ -22,12 +22,15 @@ public class DetallePedidoEntity {
 	private double subtotal;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pedido") 
-	private PedidosEntity pedido;
+    @JoinColumn(
+            name = "id_pedido",
+            nullable = false
+    )
+    private PedidosEntity pedido;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_producto") 
-	private ProductoEntity detallePedido;
+	private ProductoEntity producto;
 
 
 }

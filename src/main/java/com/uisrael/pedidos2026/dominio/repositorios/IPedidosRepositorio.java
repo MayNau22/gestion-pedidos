@@ -10,5 +10,5 @@ public interface IPedidosRepositorio {
 	Optional<Pedidos> buscarPorId(int idPedidos);
 	List<Pedidos> listarTodos();
 	void eliminar (int idPedidos);
-
+	List<Pedidos> listarPorUsuario(int idUsuario);
 }
