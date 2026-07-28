@@ -16,14 +16,11 @@ public class ProductoRequestDto {
 	private String nombre;
 	@NotBlank
 	private String descripcion;
-	@NotBlank
 	private Double precio;
-	@NotBlank
 	private int stock;
 	@NotBlank
 	private String imagenUrl;
 	private boolean disponible;
-	@NotBlank
 	private Date fechaCreacion;
 	
 

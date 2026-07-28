@@ -11,7 +11,6 @@ public class CategoriaRequestDto {
 	private String nombre;
 	@NotBlank
 	private String descripcion;
-	@NotBlank
 	private boolean estado;
 	
 

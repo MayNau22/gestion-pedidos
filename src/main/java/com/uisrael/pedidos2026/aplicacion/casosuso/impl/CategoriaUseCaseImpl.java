@@ -6,10 +6,10 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.ICategoriaUseCase;
 import com.uisrael.pedidos2026.dominio.entidades.Categoria;
 import com.uisrael.pedidos2026.dominio.repositorios.ICategoriaRepositorio;
 
-public class CategoriaUseCaseImpl implements ICategoriaUseCase{
-	
+public class CategoriaUseCaseImpl implements ICategoriaUseCase {
+
 	private final ICategoriaRepositorio repositorio;
-	
+
 	public CategoriaUseCaseImpl(ICategoriaRepositorio repositorio) {
 		this.repositorio = repositorio;
 	}
@@ -21,8 +21,7 @@ public class CategoriaUseCaseImpl implements ICategoriaUseCase{
 
 	@Override
 	public Categoria buscarId(int idCategoria) {
-		return repositorio.buscarId(idCategoria).orElseThrow(
-				() -> new RuntimeException("Categoria no encontrada"));
+		return repositorio.buscarId(idCategoria).orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
 	}
 
 	@Override
@@ -33,18 +32,24 @@ public class CategoriaUseCaseImpl implements ICategoriaUseCase{
 	@Override
 	public void eliminar(int idCategoria) {
 		repositorio.eliminar(idCategoria);
-		
+
 	}
 
 	@Override
 	public void activar(int idCategoria) {
 		repositorio.activar(idCategoria);
-		
+
 	}
 
 	@Override
 	public Categoria actualizar(Categoria categoria) {
 		return repositorio.actualizar(categoria);
+	}
+
+	@Override
+	public List<Categoria> listarActivas() {
+
+		return repositorio.listarActivas();
 	}
 
 }

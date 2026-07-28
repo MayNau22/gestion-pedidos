@@ -10,10 +10,12 @@ import com.uisrael.pedidos2026.dominio.entidades.DetallePedidos;
 import com.uisrael.pedidos2026.dominio.entidades.Pedidos;
 import com.uisrael.pedidos2026.dominio.repositorios.IPedidosRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.DetallePedidoEntity;
+import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EntregasEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EstadosGeneralesEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.PedidosEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.ProductoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.UsuarioEntity;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IEntregasJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEstadosGeneralesJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IPedidosJpaRepositorios;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
@@ -25,18 +27,17 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 	private final IUsuarioJpaRepositorio usuarioJpaRepositorio;
 	private final IProductoJpaRepositorio productoJpaRepositorio;
 	private final IEstadosGeneralesJpaRepositorio estadoJpaRepositorio;
+	private final IEntregasJpaRepositorio entregasJpaRepositorio;
 
 	public PedidosRepositoriosImpl(IPedidosJpaRepositorios pedidosJpaRepositorio,
 			IUsuarioJpaRepositorio usuarioJpaRepositorio, IProductoJpaRepositorio productoJpaRepositorio,
-			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio) {
-
+			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio) {
+		super();
 		this.pedidosJpaRepositorio = pedidosJpaRepositorio;
-
 		this.usuarioJpaRepositorio = usuarioJpaRepositorio;
-
 		this.productoJpaRepositorio = productoJpaRepositorio;
-
 		this.estadoJpaRepositorio = estadoJpaRepositorio;
+		this.entregasJpaRepositorio = entregasJpaRepositorio;
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
 		EstadosGeneralesEntity estadoInicial = estadoJpaRepositorio
-				.findByNombreIgnoreCaseAndTipoEstadoIgnoreCase("PENDIENTE DE CONFIRMACION", "PEDIDO")
+				.findByNombreIgnoreCaseAndTipoEstadoIgnoreCase("PENDIENTE", "PEDIDO")
 				.orElseThrow(() -> new RuntimeException("No existe el estado inicial " + "PENDIENTE DE CONFIRMACION"));
 
 		if (nuevoPedido.getDetalles() == null || nuevoPedido.getDetalles().isEmpty()) {
@@ -153,10 +154,25 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 
 			pedido.setNombreCliente(entity.getUsuarioPedido().getNombre());
 
+			pedido.setApellidoCliente(entity.getUsuarioPedido().getApellido());
+
 			pedido.setCelularCliente(entity.getUsuarioPedido().getCelular());
 		}
 
-		pedido.setIdEstado(entity.getEstadoPedido() != null ? entity.getEstadoPedido().getIdEstado() : 0);
+		if (entity.getEstadoPedido() != null) {
+
+			pedido.setIdEstado(entity.getEstadoPedido().getIdEstado());
+
+			pedido.setNombreEstado(entity.getEstadoPedido().getNombre());
+
+			pedido.setTipoEstado(entity.getEstadoPedido().getTipoEstado());
+
+		} else {
+
+			pedido.setIdEstado(0);
+			pedido.setNombreEstado("SIN ESTADO");
+			pedido.setTipoEstado(null);
+		}
 
 		pedido.setFechaPedido(entity.getFechaPedido());
 
@@ -207,5 +223,70 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 
 		return pedidosJpaRepositorio.findByUsuarioPedidoIdUsuario(idUsuario).stream().map(this::convertirADominio)
 				.toList();
+	}
+
+
+	@Override
+	@Transactional
+	public Pedidos cambiarEstado(int idPedido, int idEstado, int idUsuario, String observacion) {
+
+		PedidosEntity pedido = pedidosJpaRepositorio.findById(idPedido)
+				.orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+
+		EstadosGeneralesEntity nuevoEstado = estadoJpaRepositorio.findById(idEstado)
+				.orElseThrow(() -> new RuntimeException("Estado no encontrado"));
+
+		String tipoEstado = nuevoEstado.getTipoEstado() != null ? nuevoEstado.getTipoEstado().trim() : "";
+
+		if (!"PEDIDO".equalsIgnoreCase(tipoEstado)) {
+
+			throw new RuntimeException("El estado seleccionado no pertenece " + "al módulo PEDIDO");
+		}
+
+		usuarioJpaRepositorio.findById(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+		pedido.setEstadoPedido(nuevoEstado);
+
+		if (observacion != null && !observacion.isBlank()) {
+
+			pedido.setObservacion(observacion.trim());
+		}
+
+		PedidosEntity actualizado = pedidosJpaRepositorio.save(pedido);
+
+
+		if ("CONFIRMADO".equalsIgnoreCase(nuevoEstado.getNombre())) {
+
+			boolean yaExiste = entregasJpaRepositorio.existsByPedidoEntregaIdPedido(idPedido);
+
+			if (!yaExiste) {
+
+				EstadosGeneralesEntity estadoEntregaPendiente = estadoJpaRepositorio.findById(13)
+						.orElseThrow(() -> new RuntimeException("No existe el estado " + "PENDIENTE / ENTREGA"));
+
+				String tipoEntrega = estadoEntregaPendiente.getTipoEstado() != null
+						? estadoEntregaPendiente.getTipoEstado().trim()
+						: "";
+
+				if (!"ENTREGA".equalsIgnoreCase(tipoEntrega)) {
+
+					throw new RuntimeException("El estado 13 no pertenece " + "al módulo ENTREGA");
+				}
+
+				EntregasEntity nuevaEntrega = new EntregasEntity();
+
+				nuevaEntrega.setPedidoEntrega(actualizado);
+
+				nuevaEntrega.setEstadoEntrega(estadoEntregaPendiente);
+
+				nuevaEntrega.setTipoEntrega("DOMICILIO");
+
+				nuevaEntrega.setObservacion("Entrega creada automáticamente " + "al confirmar el pedido");
+
+				entregasJpaRepositorio.save(nuevaEntrega);
+			}
+		}
+
+		return convertirADominio(actualizado);
 	}
 }

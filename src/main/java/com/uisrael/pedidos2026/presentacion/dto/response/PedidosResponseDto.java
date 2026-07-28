@@ -14,7 +14,11 @@ public class PedidosResponseDto {
 	private int idEstado;
 	private int idUsuario;
 	private String nombreCliente;
+	private String apellidoCliente;
 	private String celularCliente;
+	
+	private String nombreEstado;
+	private String tipoEstado;
 	
 	private List<DetallePedidosResponseDto> detalles;
 
@@ -105,6 +109,31 @@ public class PedidosResponseDto {
 	public void setCelularCliente(String celularCliente) {
 	    this.celularCliente = celularCliente;
 	}
+
+	public String getNombreEstado() {
+		return nombreEstado;
+	}
+
+	public void setNombreEstado(String nombreEstado) {
+		this.nombreEstado = nombreEstado;
+	}
+
+	public String getTipoEstado() {
+		return tipoEstado;
+	}
+
+	public void setTipoEstado(String tipoEstado) {
+		this.tipoEstado = tipoEstado;
+	}
+
+	public String getApellidoCliente() {
+		return apellidoCliente;
+	}
+
+	public void setApellidoCliente(String apellidoCliente) {
+		this.apellidoCliente = apellidoCliente;
+	}
+	
 	
 	
 }

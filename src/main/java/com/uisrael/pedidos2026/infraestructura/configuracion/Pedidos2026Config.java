@@ -45,8 +45,8 @@ import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IHistoria
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IProductoJpaMapper;
 
 import com.uisrael.pedidos2026.infraestructura.repositorios.ICategoriaJpaRepositorio;
-import com.uisrael.pedidos2026.infraestructura.repositorios.IComprobantesPagoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IDetallePedidosJpaRepositorios;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IEntregasJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEstadosGeneralesJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IHistorialPedidosJpaRepositorios;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IPedidosJpaRepositorios;
@@ -95,10 +95,10 @@ public class Pedidos2026Config {
 	@Bean
 	IPedidosRepositorio pedidosRepositorio(IPedidosJpaRepositorios pedidosJpaRepositorio,
 			IUsuarioJpaRepositorio usuarioJpaRepositorio, IProductoJpaRepositorio productoJpaRepositorio,
-			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio) {
+			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio) {
 
 		return new PedidosRepositoriosImpl(pedidosJpaRepositorio, usuarioJpaRepositorio, productoJpaRepositorio,
-				estadoJpaRepositorio);
+				estadoJpaRepositorio, entregasJpaRepositorio);
 	}
 
 	@Bean

@@ -20,4 +20,8 @@ public interface IComprobantesPagoUseCase {
 
 	ComprobantesPago guardarArchivo(int idPedido, MultipartFile archivo, String tipoPago, Double monto,
 			String observacion);
+
+	List<ComprobantesPago> listarPorPedido(int idPedido);
+
+	ComprobantesPago cambiarEstado(int idComprobante, int idEstado, String observacion);
 }

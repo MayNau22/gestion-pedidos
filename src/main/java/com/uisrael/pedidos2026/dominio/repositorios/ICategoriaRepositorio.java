@@ -13,5 +13,7 @@ public interface ICategoriaRepositorio {
 	void eliminar(int idCategoria);
 	void activar(int idCategoria);
 	Categoria actualizar(Categoria categoria);
+	List<Categoria> listarActivas();
+	
 
 }

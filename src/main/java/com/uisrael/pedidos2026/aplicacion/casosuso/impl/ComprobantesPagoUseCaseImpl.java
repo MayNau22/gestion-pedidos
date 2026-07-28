@@ -92,4 +92,30 @@ public class ComprobantesPagoUseCaseImpl implements IComprobantesPagoUseCase {
 
 		repositorio.eliminar(idComprobante);
 	}
+
+	@Override
+	public List<ComprobantesPago> listarPorPedido(int idPedido) {
+
+		if (idPedido <= 0) {
+			throw new RuntimeException("El pedido es obligatorio");
+		}
+
+		return repositorio.listarPorPedido(idPedido);
+	}
+
+	@Override
+	public ComprobantesPago cambiarEstado(int idComprobante, int idEstado, String observacion) {
+
+		if (idComprobante <= 0) {
+
+			throw new RuntimeException("El comprobante es obligatorio");
+		}
+
+		if (idEstado <= 0) {
+
+			throw new RuntimeException("El estado es obligatorio");
+		}
+
+		return repositorio.cambiarEstado(idComprobante, idEstado, observacion);
+	}
 }

@@ -10,36 +10,41 @@ public class Pedidos {
 	private int idUsuario;
 	private int idEstado;
 	private String nombreCliente;
+	private String apellidoCliente;
 	private String celularCliente;
 	private Date fechaPedido;
 	private Date fechaEntrega;
 	private String direccionEntrega;
 	private String observacion;
 	private Double total;
+	
+	private String nombreEstado;
+	private String tipoEstado;
 
 	private List<DetallePedidos> detalles = new ArrayList<>();
 
 	public Pedidos() {
 	}
 
-
-	public Pedidos(int idPedido, int idUsuario, int idEstado, String nombreCliente, String celularCliente,
-			Date fechaPedido, Date fechaEntrega, String direccionEntrega, String observacion, Double total,
-			List<DetallePedidos> detalles) {
+	public Pedidos(int idPedido, int idUsuario, int idEstado, String nombreCliente, String apellidoCliente,
+			String celularCliente, Date fechaPedido, Date fechaEntrega, String direccionEntrega, String observacion,
+			Double total, String nombreEstado, String tipoEstado, List<DetallePedidos> detalles) {
 		super();
 		this.idPedido = idPedido;
 		this.idUsuario = idUsuario;
 		this.idEstado = idEstado;
 		this.nombreCliente = nombreCliente;
+		this.apellidoCliente = apellidoCliente;
 		this.celularCliente = celularCliente;
 		this.fechaPedido = fechaPedido;
 		this.fechaEntrega = fechaEntrega;
 		this.direccionEntrega = direccionEntrega;
 		this.observacion = observacion;
 		this.total = total;
+		this.nombreEstado = nombreEstado;
+		this.tipoEstado = tipoEstado;
 		this.detalles = detalles;
 	}
-
 
 	public int getIdPedido() {
 		return idPedido;
@@ -131,4 +136,29 @@ public class Pedidos {
 	public void setCelularCliente(String celularCliente) {
 	    this.celularCliente = celularCliente;
 	}
+	public String getNombreEstado() {
+	    return nombreEstado;
+	}
+
+	public void setNombreEstado(String nombreEstado) {
+	    this.nombreEstado = nombreEstado;
+	}
+
+	public String getTipoEstado() {
+	    return tipoEstado;
+	}
+
+	public void setTipoEstado(String tipoEstado) {
+	    this.tipoEstado = tipoEstado;
+	}
+
+	public String getApellidoCliente() {
+		return apellidoCliente;
+	}
+
+	public void setApellidoCliente(String apellidoCliente) {
+		this.apellidoCliente = apellidoCliente;
+	}
+	
+	
 }

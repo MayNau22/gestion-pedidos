@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table(name = "entregas")
 public class EntregasEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEntrega;
@@ -27,11 +27,11 @@ public class EntregasEntity {
 	private Date fechaEntregaReal;
 
 	@ManyToOne
-	@JoinColumn(name = "id_pedido")
+	@JoinColumn(name = "id_pedido", unique = true)
 	private PedidosEntity pedidoEntrega;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
 	private EstadosGeneralesEntity estadoEntrega;
-	
+
 }

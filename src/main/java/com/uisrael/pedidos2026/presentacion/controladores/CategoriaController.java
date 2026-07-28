@@ -100,4 +100,14 @@ public class CategoriaController {
 
         return ResponseEntity.ok().build();
     }
+    
+    @GetMapping("/activas")
+    public List<CategoriaResponseDto> listarActivas() {
+
+        return categoriaUseCase
+                .listarActivas()
+                .stream()
+                .map(mapper::toResponseDto)
+                .toList();
+    }
 }

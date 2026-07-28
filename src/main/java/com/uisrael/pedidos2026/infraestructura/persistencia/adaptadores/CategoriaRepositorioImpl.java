@@ -9,12 +9,11 @@ import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.CategoriaEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.ICategoriaJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.repositorios.ICategoriaJpaRepositorio;
 
+public class CategoriaRepositorioImpl implements ICategoriaRepositorio {
 
-public class CategoriaRepositorioImpl implements ICategoriaRepositorio{
-	
 	private final ICategoriaJpaRepositorio jpaRepositorio;
 	private final ICategoriaJpaMapper entityMapper;
-	
+
 	public CategoriaRepositorioImpl(ICategoriaJpaRepositorio jpaRepositorio, ICategoriaJpaMapper entityMapper) {
 		this.jpaRepositorio = jpaRepositorio;
 		this.entityMapper = entityMapper;
@@ -39,52 +38,43 @@ public class CategoriaRepositorioImpl implements ICategoriaRepositorio{
 
 	@Override
 	public void eliminar(int idCategoria) {
-		CategoriaEntity categoria = jpaRepositorio
-	            .findById(idCategoria)
-	            .orElseThrow(() ->
-	                    new RuntimeException(
-	                            "Categoría no encontrada."
-	                    ));
+		CategoriaEntity categoria = jpaRepositorio.findById(idCategoria)
+				.orElseThrow(() -> new RuntimeException("Categoría no encontrada."));
 
-	    categoria.setEstado(false);
+		categoria.setEstado(false);
 
-	    jpaRepositorio.save(categoria);
-		
+		jpaRepositorio.save(categoria);
+
 	}
-	
+
 	@Override
 	public void activar(int idCategoria) {
 
-	    CategoriaEntity categoria = jpaRepositorio
-	            .findById(idCategoria)
-	            .orElseThrow(() ->
-	                    new RuntimeException(
-	                            "Categoría no encontrada."
-	                    ));
+		CategoriaEntity categoria = jpaRepositorio.findById(idCategoria)
+				.orElseThrow(() -> new RuntimeException("Categoría no encontrada."));
 
-	    categoria.setEstado(true);
+		categoria.setEstado(true);
 
-	    jpaRepositorio.save(categoria);
+		jpaRepositorio.save(categoria);
 	}
 
 	@Override
 	public Categoria actualizar(Categoria categoria) {
-		 CategoriaEntity existente = jpaRepositorio
-		            .findById(categoria.getIdCategoria())
-		            .orElseThrow(() ->
-		                    new RuntimeException(
-		                            "Categoría no encontrada con ID: "
-		                            + categoria.getIdCategoria()
-		                    )
-		            );
+		CategoriaEntity existente = jpaRepositorio.findById(categoria.getIdCategoria()).orElseThrow(
+				() -> new RuntimeException("Categoría no encontrada con ID: " + categoria.getIdCategoria()));
 
-		    existente.setNombre(categoria.getNombre());
-		    existente.setDescripcion(categoria.getDescripcion());
-		    
-		    CategoriaEntity actualizada =
-		            jpaRepositorio.save(existente);
+		existente.setNombre(categoria.getNombre());
+		existente.setDescripcion(categoria.getDescripcion());
 
-		    return entityMapper.toDomain(actualizada);
+		CategoriaEntity actualizada = jpaRepositorio.save(existente);
+
+		return entityMapper.toDomain(actualizada);
 	}
-	
+
+	@Override
+	public List<Categoria> listarActivas() {
+
+		return jpaRepositorio.findByEstadoTrueOrderByNombreAsc().stream().map(entityMapper::toDomain).toList();
+	}
+
 }

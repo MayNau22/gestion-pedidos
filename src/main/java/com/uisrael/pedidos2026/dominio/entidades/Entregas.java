@@ -1,100 +1,178 @@
 package com.uisrael.pedidos2026.dominio.entidades;
 
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.List;
+
 
 public class Entregas {
     
-    // Integer permite recibir valores 'null' al registrar nuevas entregas en el POST
-    private Integer idEntrega; 
-    private int idPedido;
-    private int idEstado;
-    private String tipoEntrega;
-    private String recibidoPor;
-    private String evidenciaEntregaUrl;
-    private String observacion;
+	 private int idEntrega;
+	    private int idPedido;
+	    private int idEstado;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
-    private Date fechaEntregaReal;
+	    private String nombreEstado;
+	    private String tipoEntrega;
+	    private String recibidoPor;
+	    private String evidenciaEntregaUrl;
+	    private String observacion;
 
-    public Entregas() {
-        super();
-    }
+	    private Date fechaEntregaReal;
+	    private String nombreCliente;
+	    private String apellidoCliente;
+	    private String celularCliente;
+	    private String correoCliente;
 
-    public Entregas(Integer idEntrega, int idPedido, int idEstado, String tipoEntrega, String recibidoPor,
-                    String evidenciaEntregaUrl, String observacion, Date fechaEntregaReal) {
-        super();
-        this.idEntrega = idEntrega;
-        this.idPedido = idPedido;
-        this.idEstado = idEstado;
-        this.tipoEntrega = tipoEntrega;
-        this.recibidoPor = recibidoPor;
-        this.evidenciaEntregaUrl = evidenciaEntregaUrl;
-        this.observacion = observacion;
-        this.fechaEntregaReal = fechaEntregaReal;
-    }
+	    private String direccionEntrega;
+	    private Date fechaPedido;
+	    private Date fechaEntregaSolicitada;
+	    private Double totalPedido;
 
-    public Integer getIdEntrega() {
-        return idEntrega;
-    }
+	    private List<DetallePedidos> detalles;
 
-    public void setIdEntrega(Integer idEntrega) {
-        this.idEntrega = idEntrega;
-    }
+	    public Entregas() {
+	    }
 
-    public int getIdPedido() {
-        return idPedido;
-    }
+	    public int getIdEntrega() {
+	        return idEntrega;
+	    }
 
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
+	    public void setIdEntrega(int idEntrega) {
+	        this.idEntrega = idEntrega;
+	    }
 
-    public int getIdEstado() {
-        return idEstado;
-    }
+	    public int getIdPedido() {
+	        return idPedido;
+	    }
 
-    public void setIdEstado(int idEstado) {
-        this.idEstado = idEstado;
-    }
+	    public void setIdPedido(int idPedido) {
+	        this.idPedido = idPedido;
+	    }
 
-    public String getTipoEntrega() {
-        return tipoEntrega;
-    }
+	    public int getIdEstado() {
+	        return idEstado;
+	    }
 
-    public void setTipoEntrega(String tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
-    }
+	    public void setIdEstado(int idEstado) {
+	        this.idEstado = idEstado;
+	    }
 
-    public String getRecibidoPor() {
-        return recibidoPor;
-    }
+	    public String getNombreEstado() {
+	        return nombreEstado;
+	    }
 
-    public void setRecibidoPor(String recibidoPor) {
-        this.recibidoPor = recibidoPor;
-    }
+	    public void setNombreEstado(String nombreEstado) {
+	        this.nombreEstado = nombreEstado;
+	    }
 
-    public String getEvidenciaEntregaUrl() {
-        return evidenciaEntregaUrl;
-    }
+	    public String getTipoEntrega() {
+	        return tipoEntrega;
+	    }
 
-    public void setEvidenciaEntregaUrl(String evidenciaEntregaUrl) {
-        this.evidenciaEntregaUrl = evidenciaEntregaUrl;
-    }
+	    public void setTipoEntrega(String tipoEntrega) {
+	        this.tipoEntrega = tipoEntrega;
+	    }
 
-    public String getObservacion() {
-        return observacion;
-    }
+	    public String getRecibidoPor() {
+	        return recibidoPor;
+	    }
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
+	    public void setRecibidoPor(String recibidoPor) {
+	        this.recibidoPor = recibidoPor;
+	    }
 
-    public Date getFechaEntregaReal() {
-        return fechaEntregaReal;
-    }
+	    public String getEvidenciaEntregaUrl() {
+	        return evidenciaEntregaUrl;
+	    }
 
-    public void setFechaEntregaReal(Date fechaEntregaReal) {
-        this.fechaEntregaReal = fechaEntregaReal;
-    }
+	    public void setEvidenciaEntregaUrl(String evidenciaEntregaUrl) {
+	        this.evidenciaEntregaUrl = evidenciaEntregaUrl;
+	    }
+
+	    public String getObservacion() {
+	        return observacion;
+	    }
+
+	    public void setObservacion(String observacion) {
+	        this.observacion = observacion;
+	    }
+
+	    public Date getFechaEntregaReal() {
+	        return fechaEntregaReal;
+	    }
+
+	    public void setFechaEntregaReal(Date fechaEntregaReal) {
+	        this.fechaEntregaReal = fechaEntregaReal;
+	    }
+
+	    public String getNombreCliente() {
+	        return nombreCliente;
+	    }
+
+	    public void setNombreCliente(String nombreCliente) {
+	        this.nombreCliente = nombreCliente;
+	    }
+
+	    public String getApellidoCliente() {
+	        return apellidoCliente;
+	    }
+
+	    public void setApellidoCliente(String apellidoCliente) {
+	        this.apellidoCliente = apellidoCliente;
+	    }
+
+	    public String getCelularCliente() {
+	        return celularCliente;
+	    }
+
+	    public void setCelularCliente(String celularCliente) {
+	        this.celularCliente = celularCliente;
+	    }
+
+	    public String getCorreoCliente() {
+	        return correoCliente;
+	    }
+
+	    public void setCorreoCliente(String correoCliente) {
+	        this.correoCliente = correoCliente;
+	    }
+
+	    public String getDireccionEntrega() {
+	        return direccionEntrega;
+	    }
+
+	    public void setDireccionEntrega(String direccionEntrega) {
+	        this.direccionEntrega = direccionEntrega;
+	    }
+
+	    public Date getFechaPedido() {
+	        return fechaPedido;
+	    }
+
+	    public void setFechaPedido(Date fechaPedido) {
+	        this.fechaPedido = fechaPedido;
+	    }
+
+	    public Date getFechaEntregaSolicitada() {
+	        return fechaEntregaSolicitada;
+	    }
+
+	    public void setFechaEntregaSolicitada(Date fechaEntregaSolicitada) {
+	        this.fechaEntregaSolicitada = fechaEntregaSolicitada;
+	    }
+
+	    public Double getTotalPedido() {
+	        return totalPedido;
+	    }
+
+	    public void setTotalPedido(Double totalPedido) {
+	        this.totalPedido = totalPedido;
+	    }
+
+	    public List<DetallePedidos> getDetalles() {
+	        return detalles;
+	    }
+
+	    public void setDetalles(List<DetallePedidos> detalles) {
+	        this.detalles = detalles;
+	    }
 }

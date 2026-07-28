@@ -7,8 +7,14 @@ import com.uisrael.pedidos2026.dominio.entidades.Pedidos;
 
 public interface IPedidosRepositorio {
 	Pedidos guardar(Pedidos nuevoPedidos);
+
 	Optional<Pedidos> buscarPorId(int idPedidos);
+
 	List<Pedidos> listarTodos();
-	void eliminar (int idPedidos);
+
+	void eliminar(int idPedidos);
+
 	List<Pedidos> listarPorUsuario(int idUsuario);
+
+	Pedidos cambiarEstado(int idPedido, int idEstado, int idUsuario, String observacion);
 }

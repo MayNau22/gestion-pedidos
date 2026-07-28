@@ -13,9 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IComprobantesPagoUseCase;
 import com.uisrael.pedidos2026.dominio.entidades.ComprobantesPago;
+import com.uisrael.pedidos2026.presentacion.dto.request.CambiarEstadoComprobanteRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.request.ComprobantesPagoRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.response.ComprobantesPagoResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IComprobantesPagoDtoMapper;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ComprobantesPagoController {
@@ -106,5 +109,27 @@ public class ComprobantesPagoController {
 
 		return useCase.buscarPorPedido(idPedido).map(c -> ResponseEntity.ok(mapper.toResponseDto(c)))
 				.orElseGet(() -> ResponseEntity.noContent().build());
+	}
+
+	@GetMapping("/api/comprobantes-pago/pedido/{idPedido}/lista")
+	@ResponseBody
+	public ResponseEntity<List<ComprobantesPagoResponseDto>> listarPorPedido(@PathVariable int idPedido) {
+
+		List<ComprobantesPagoResponseDto> comprobantes = useCase.listarPorPedido(idPedido).stream()
+				.map(mapper::toResponseDto).toList();
+
+		return ResponseEntity.ok(comprobantes);
+	}
+
+	@PutMapping("/api/comprobantes-pago/{idComprobante}/estado")
+	@ResponseBody
+	public ResponseEntity<ComprobantesPagoResponseDto> cambiarEstado(@PathVariable int idComprobante,
+
+			@Valid @RequestBody CambiarEstadoComprobanteRequestDto request) {
+
+		ComprobantesPago actualizado = useCase.cambiarEstado(idComprobante, request.getIdEstado(),
+				request.getObservacion());
+
+		return ResponseEntity.ok(mapper.toResponseDto(actualizado));
 	}
 }

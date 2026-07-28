@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IPedidosUseCase;
+import com.uisrael.pedidos2026.presentacion.dto.request.CambiarEstadoPedidoRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.request.PedidosRequestDto;
 import com.uisrael.pedidos2026.presentacion.dto.response.PedidosResponseDto;
 import com.uisrael.pedidos2026.presentacion.mapeadores.IPedidosDtoMapper;
@@ -64,6 +66,16 @@ public class PedidosController {
 
 		return pedidosUseCase.listarPorUsuario(idUsuario).stream().map(mapper::toResponseDto).toList();
 	}
-	
-	
+
+	@PutMapping("/{idPedido}/estado")
+	public ResponseEntity<PedidosResponseDto> cambiarEstado(@PathVariable int idPedido,
+
+			@Valid @RequestBody CambiarEstadoPedidoRequestDto request) {
+
+		PedidosResponseDto pedidoActualizado = mapper.toResponseDto(pedidosUseCase.cambiarEstado(idPedido,
+				request.getIdEstado(), request.getIdUsuario(), request.getObservacion()));
+
+		return ResponseEntity.ok(pedidoActualizado);
+	}
+
 }

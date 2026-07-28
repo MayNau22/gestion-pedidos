@@ -11,4 +11,6 @@ public interface IComprobantesPagoJpaRepositorio extends JpaRepository<Comproban
 	List<ComprobantesPagoEntity> findByPedidoComprobanteIdPedido(int idPedido);
 
 	Optional<ComprobantesPagoEntity> findFirstByPedidoComprobanteIdPedidoOrderByFechaSubidaDesc(int idPedido);
+
+	List<ComprobantesPagoEntity> findByPedidoComprobanteIdPedidoOrderByFechaSubidaDesc(int idPedido);
 }

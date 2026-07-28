@@ -20,4 +20,8 @@ public interface IComprobantesPagoRepositorio {
 	List<ComprobantesPago> listarTodos();
 
 	void eliminar(int idComprobante);
+
+	List<ComprobantesPago> listarPorPedido(int idPedido);
+
+	ComprobantesPago cambiarEstado(int idComprobante, int idEstado, String observacion);
 }
