@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import org.springframework.http.MediaType;
 
-
-
 @RestController
 @RequestMapping("/api/entregas")
 public class EntregasController {
@@ -29,7 +27,7 @@ public class EntregasController {
 		this.mapper = mapper;
 	}
 
-	@GetMapping
+	@GetMapping("/activas")
 	public List<EntregasResponseDto> listarActivas() {
 
 		return useCase.listarActivas().stream().map(mapper::toResponseDto).toList();
@@ -73,5 +71,11 @@ public class EntregasController {
 		Entregas finalizada = useCase.finalizarEntrega(idEntrega, evidencia, recibidoPor, observacion);
 
 		return ResponseEntity.ok(mapper.toResponseDto(finalizada));
+	}
+
+	@GetMapping
+	public List<EntregasResponseDto> listarTodos() {
+
+		return useCase.listarTodos().stream().map(mapper::toResponseDto).toList();
 	}
 }
