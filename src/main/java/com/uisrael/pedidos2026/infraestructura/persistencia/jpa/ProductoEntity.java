@@ -22,16 +22,15 @@ public class ProductoEntity {
 	private String imagenUrl;
 	private boolean disponible;
 	private Date fechaCreacion;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
-	private CategoriaEntity categoria; 
-	
-	
-	@OneToMany(mappedBy ="producto" )
-	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>() ;
+	private CategoriaEntity categoria;
 
+	@OneToMany(mappedBy = "producto")
+	private List<DetallePedidoEntity> detallePedidos = new ArrayList<>();
 
-   
- 
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+	private List<PrecioProductoEntity> precios = new ArrayList<>();
+
 }

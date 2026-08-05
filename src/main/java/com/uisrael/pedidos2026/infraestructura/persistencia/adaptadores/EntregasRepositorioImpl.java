@@ -39,7 +39,6 @@ public class EntregasRepositorioImpl implements IEntregasRepositorio {
 	private final IComprobantesPagoJpaRepositorio comprobantesJpaRepositorio;
 	private final IPedidosJpaRepositorios pedidosJpaRepositorio;
 
-
 	public EntregasRepositorioImpl(IEntregasJpaRepositorio jpaRepositorio, IEntregasJpaMapper mapper,
 			IEstadosGeneralesJpaRepositorio estadosJpaRepositorio,
 			IComprobantesPagoJpaRepositorio comprobantesJpaRepositorio, IPedidosJpaRepositorios pedidosJpaRepositorio) {
@@ -165,6 +164,10 @@ public class EntregasRepositorioImpl implements IEntregasRepositorio {
 		if (entity.getProducto() != null) {
 
 			detalle.setIdProducto(entity.getProducto().getIdProducto());
+
+			detalle.setNombreProducto(entity.getProducto().getNombre());
+
+			detalle.setImagenUrl(entity.getProducto().getImagenUrl());
 		}
 
 		detalle.setCantidad(entity.getCantidad());

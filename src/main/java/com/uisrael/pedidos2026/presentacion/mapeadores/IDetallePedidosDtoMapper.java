@@ -9,7 +9,8 @@ import com.uisrael.pedidos2026.presentacion.dto.response.DetallePedidosResponseD
 @Mapper(componentModel = "spring")
 public interface IDetallePedidosDtoMapper {
 
+
 	DetallePedidos toDomain(DetallePedidosRequestDto dto);
-	
-	DetallePedidosResponseDto toResponseDto(DetallePedidos detallepedidospojo);
+
+	DetallePedidosResponseDto toResponseDto(DetallePedidos detalle);
 }

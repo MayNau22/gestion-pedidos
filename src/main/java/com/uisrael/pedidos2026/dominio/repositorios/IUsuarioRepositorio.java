@@ -22,5 +22,8 @@ public interface IUsuarioRepositorio {
 
 	void activar(int idUsuario);
 
+	Usuario actualizar(Usuario usuario);
+
+	Usuario actualizarContrasena(int idUsuario, String nuevaContrasena);
 
 }

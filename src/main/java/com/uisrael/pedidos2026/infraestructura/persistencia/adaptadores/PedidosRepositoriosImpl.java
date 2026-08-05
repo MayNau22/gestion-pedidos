@@ -8,16 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uisrael.pedidos2026.dominio.entidades.DetallePedidos;
 import com.uisrael.pedidos2026.dominio.entidades.Pedidos;
+import com.uisrael.pedidos2026.dominio.excepciones.StockInsuficienteException;
 import com.uisrael.pedidos2026.dominio.repositorios.IPedidosRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.DetallePedidoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EntregasEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.EstadosGeneralesEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.PedidosEntity;
+import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.PrecioProductoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.ProductoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.UsuarioEntity;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEntregasJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEstadosGeneralesJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IPedidosJpaRepositorios;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IPrecioProductoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
@@ -28,16 +31,19 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 	private final IProductoJpaRepositorio productoJpaRepositorio;
 	private final IEstadosGeneralesJpaRepositorio estadoJpaRepositorio;
 	private final IEntregasJpaRepositorio entregasJpaRepositorio;
+	private final IPrecioProductoJpaRepositorio precioProductoJpaRepositorio;
 
 	public PedidosRepositoriosImpl(IPedidosJpaRepositorios pedidosJpaRepositorio,
 			IUsuarioJpaRepositorio usuarioJpaRepositorio, IProductoJpaRepositorio productoJpaRepositorio,
-			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio) {
+			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio,
+			IPrecioProductoJpaRepositorio precioProductoJpaRepositorio) {
 		super();
 		this.pedidosJpaRepositorio = pedidosJpaRepositorio;
 		this.usuarioJpaRepositorio = usuarioJpaRepositorio;
 		this.productoJpaRepositorio = productoJpaRepositorio;
 		this.estadoJpaRepositorio = estadoJpaRepositorio;
 		this.entregasJpaRepositorio = entregasJpaRepositorio;
+		this.precioProductoJpaRepositorio = precioProductoJpaRepositorio;
 	}
 
 	@Override
@@ -90,10 +96,16 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 
 			if (detalleDominio.getCantidad() > producto.getStock()) {
 
-				throw new RuntimeException("Stock insuficiente para " + producto.getNombre());
+				throw new StockInsuficienteException(producto.getNombre(), producto.getStock(),
+						detalleDominio.getCantidad());
 			}
 
-			double precioUnitario = producto.getPrecio();
+			PrecioProductoEntity precioActivo = precioProductoJpaRepositorio
+					.findFirstByProductoIdProductoAndActivoTrue(producto.getIdProducto())
+					.orElseThrow(() -> new RuntimeException(
+							"El producto " + producto.getNombre() + " no tiene un precio activo"));
+
+			double precioUnitario = precioActivo.getPrecio();
 
 			double subtotal = precioUnitario * detalleDominio.getCantidad();
 
@@ -203,6 +215,12 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 				detalle.setIdProducto(
 						detalleEntity.getProducto() != null ? detalleEntity.getProducto().getIdProducto() : 0);
 
+				detalle.setNombreProducto(
+						detalleEntity.getProducto() != null ? detalleEntity.getProducto().getNombre() : null);
+
+				detalle.setImagenUrl(
+						detalleEntity.getProducto() != null ? detalleEntity.getProducto().getImagenUrl() : null);
+
 				detalle.setCantidad(detalleEntity.getCantidad());
 
 				detalle.setPrecioUnitario(detalleEntity.getPrecioUnitario());
@@ -224,7 +242,6 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 		return pedidosJpaRepositorio.findByUsuarioPedidoIdUsuario(idUsuario).stream().map(this::convertirADominio)
 				.toList();
 	}
-
 
 	@Override
 	@Transactional
@@ -253,7 +270,6 @@ public class PedidosRepositoriosImpl implements IPedidosRepositorio {
 		}
 
 		PedidosEntity actualizado = pedidosJpaRepositorio.save(pedido);
-
 
 		if ("CONFIRMADO".equalsIgnoreCase(nuevoEstado.getNombre())) {
 

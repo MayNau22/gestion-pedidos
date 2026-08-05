@@ -2,6 +2,7 @@ package com.uisrael.pedidos2026.infraestructura.configuracion;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.ICategoriaUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IComprobantesPagoUseCase;
@@ -10,7 +11,9 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEntregasUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IEstadosGeneralesUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IHistorialPedidoUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IPedidosUseCase;
+import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IPrecioProductoUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IProductoUseCase;
+import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IRecuperacionPasswordUseCase;
 import com.uisrael.pedidos2026.aplicacion.casosuso.entrada.IUsuarioUseCase;
 
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.CategoriaUseCaseImpl;
@@ -20,9 +23,11 @@ import com.uisrael.pedidos2026.aplicacion.casosuso.impl.EntregasUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.EstadosGeneralesUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.HistorialPedidoUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.PedidosUseCaseImpl;
+import com.uisrael.pedidos2026.aplicacion.casosuso.impl.PrecioProductoUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.ProductoUseCaseImpl;
+import com.uisrael.pedidos2026.aplicacion.casosuso.impl.RecuperacionPasswordUseCaseImpl;
 import com.uisrael.pedidos2026.aplicacion.casosuso.impl.UsuarioUseCaseImpl;
-
+import com.uisrael.pedidos2026.aplicacion.servicios.ICorreoService;
 import com.uisrael.pedidos2026.dominio.repositorios.ICategoriaRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IComprobantesPagoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IDetallePedidosRepositorio;
@@ -30,36 +35,42 @@ import com.uisrael.pedidos2026.dominio.repositorios.IEntregasRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IEstadosGeneralesRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IHistorialPedidoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IPedidosRepositorio;
+import com.uisrael.pedidos2026.dominio.repositorios.IPrecioProductoRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IProductoRepositorio;
+import com.uisrael.pedidos2026.dominio.repositorios.IRecuperacionPasswordRepositorio;
 import com.uisrael.pedidos2026.dominio.repositorios.IUsuarioRepositorio;
-
+import com.uisrael.pedidos2026.infraestructura.correo.CorreoServiceImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.CategoriaRepositorioImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.DetallePedidosRepositoriosImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.HistorialPedidoRepositoriosImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.PedidosRepositoriosImpl;
+import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.PrecioProductoRepositorioImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.ProductoRepositorioImpl;
-
+import com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores.RecuperacionPasswordRepositorioImpl;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.ICategoriaJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IDetallePedidosJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IHistorialPedidosJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IProductoJpaMapper;
-
+import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IRecuperacionPasswordJpaMapper;
 import com.uisrael.pedidos2026.infraestructura.repositorios.ICategoriaJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IDetallePedidosJpaRepositorios;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEntregasJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IEstadosGeneralesJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IHistorialPedidosJpaRepositorios;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IPedidosJpaRepositorios;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IPrecioProductoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IRecuperacionPasswordJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
 @Configuration
 public class Pedidos2026Config {
 
 	@Bean
-	IProductoRepositorio productoRepositorio(IProductoJpaRepositorio jpaRepositorio, IProductoJpaMapper mapper) {
+	IProductoRepositorio productoRepositorio(IProductoJpaRepositorio jpaRepositorio, IProductoJpaMapper mapper,
+			IPrecioProductoJpaRepositorio precioProductoJpaRepositorio) {
 
-		return new ProductoRepositorioImpl(jpaRepositorio, mapper);
+		return new ProductoRepositorioImpl(jpaRepositorio, mapper, precioProductoJpaRepositorio);
 	}
 
 	@Bean
@@ -95,10 +106,11 @@ public class Pedidos2026Config {
 	@Bean
 	IPedidosRepositorio pedidosRepositorio(IPedidosJpaRepositorios pedidosJpaRepositorio,
 			IUsuarioJpaRepositorio usuarioJpaRepositorio, IProductoJpaRepositorio productoJpaRepositorio,
-			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio) {
+			IEstadosGeneralesJpaRepositorio estadoJpaRepositorio, IEntregasJpaRepositorio entregasJpaRepositorio,
+			IPrecioProductoJpaRepositorio precioProductoJpaRepositorio) {
 
 		return new PedidosRepositoriosImpl(pedidosJpaRepositorio, usuarioJpaRepositorio, productoJpaRepositorio,
-				estadoJpaRepositorio, entregasJpaRepositorio);
+				estadoJpaRepositorio, entregasJpaRepositorio, precioProductoJpaRepositorio);
 	}
 
 	@Bean
@@ -143,5 +155,38 @@ public class Pedidos2026Config {
 	IEntregasUseCase entregasUseCase(IEntregasRepositorio entregasRepositorio) {
 
 		return new EntregasUseCaseImpl(entregasRepositorio);
+	}
+
+	@Bean
+	IRecuperacionPasswordRepositorio recuperacionPasswordRepositorio(IRecuperacionPasswordJpaRepositorio jpaRepositorio,
+			IRecuperacionPasswordJpaMapper mapper) {
+
+		return new RecuperacionPasswordRepositorioImpl(jpaRepositorio, mapper);
+	}
+
+	@Bean
+	IRecuperacionPasswordUseCase recuperacionPasswordUseCase(IUsuarioRepositorio usuarioRepositorio,
+			IRecuperacionPasswordRepositorio recuperacionRepositorio, ICorreoService correoService) {
+
+		return new RecuperacionPasswordUseCaseImpl(usuarioRepositorio, recuperacionRepositorio, correoService);
+	}
+
+	@Bean
+	ICorreoService correoService(JavaMailSender mailSender) {
+
+		return new CorreoServiceImpl(mailSender);
+	}
+
+	@Bean
+	IPrecioProductoRepositorio precioProductoRepositorio(IPrecioProductoJpaRepositorio precioJpaRepositorio,
+			IProductoJpaRepositorio productoJpaRepositorio) {
+
+		return new PrecioProductoRepositorioImpl(precioJpaRepositorio, productoJpaRepositorio);
+	}
+
+	@Bean
+	IPrecioProductoUseCase precioProductoUseCase(IPrecioProductoRepositorio repositorio) {
+
+		return new PrecioProductoUseCaseImpl(repositorio);
 	}
 }

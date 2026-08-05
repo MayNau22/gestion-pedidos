@@ -23,9 +23,8 @@ public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 	private final IRolesJpaRepositorio rolesJpaRepositorio;
 	private final IUsuarioRolJpaRepositorio usuarioRolesJpaRepositorio;
 
-	
-	public UsuarioRepositorioImpl(IUsuarioJpaRepositorio usuarioJpaRepositorio, IRolesJpaRepositorio rolesJpaRepositorio,
-			IUsuarioRolJpaRepositorio usuarioRolesJpaRepositorio) {
+	public UsuarioRepositorioImpl(IUsuarioJpaRepositorio usuarioJpaRepositorio,
+			IRolesJpaRepositorio rolesJpaRepositorio, IUsuarioRolJpaRepositorio usuarioRolesJpaRepositorio) {
 		super();
 		this.usuarioJpaRepositorio = usuarioJpaRepositorio;
 		this.rolesJpaRepositorio = rolesJpaRepositorio;
@@ -35,34 +34,25 @@ public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 	@Override
 	public Usuario guardar(Usuario nuevoUsuario) {
 
-		UsuarioEntity entity =
-	            mapToEntity(nuevoUsuario);
+		UsuarioEntity entity = mapToEntity(nuevoUsuario);
 
-	    entity.setIdUsuario(0);
-	    entity.setEstado("true");
-	    entity.setFechaRegistro(new java.util.Date());
+		entity.setIdUsuario(0);
+		entity.setEstado("true");
+		entity.setFechaRegistro(new java.util.Date());
 
-	    UsuarioEntity usuarioGuardado =
-	            usuarioJpaRepositorio.save(entity);
+		UsuarioEntity usuarioGuardado = usuarioJpaRepositorio.save(entity);
 
-	    RolesEntity rolCliente =
-	            rolesJpaRepositorio
-	                    .findByNombreIgnoreCase("CLIENTE")
-	                    .orElseThrow(() ->
-	                            new RuntimeException(
-	                                    "No existe el rol CLIENTE"
-	                            )
-	                    );
+		RolesEntity rolCliente = rolesJpaRepositorio.findByNombreIgnoreCase("CLIENTE")
+				.orElseThrow(() -> new RuntimeException("No existe el rol CLIENTE"));
 
-	    UsuarioRolesEntity relacion =
-	            new UsuarioRolesEntity();
+		UsuarioRolesEntity relacion = new UsuarioRolesEntity();
 
-	    relacion.setUsuarioRol(usuarioGuardado);
-	    relacion.setRol(rolCliente);
+		relacion.setUsuarioRol(usuarioGuardado);
+		relacion.setRol(rolCliente);
 
-	    usuarioRolesJpaRepositorio.save(relacion);
+		usuarioRolesJpaRepositorio.save(relacion);
 
-	    return mapToDomain(usuarioGuardado);
+		return mapToDomain(usuarioGuardado);
 	}
 
 	@Override
@@ -154,36 +144,60 @@ public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 
 	private Usuario mapToDomain(UsuarioEntity entity) {
 
-	    if (entity == null) {
-	        return null;
-	    }
+		if (entity == null) {
+			return null;
+		}
 
-	    List<Rol> roles = entity.getUsuariosroles()
-	            .stream()
-	            .map(usuarioRol -> {
+		List<Rol> roles = entity.getUsuariosroles().stream().map(usuarioRol -> {
 
-	                RolesEntity rolEntity =
-	                        usuarioRol.getRol();
+			RolesEntity rolEntity = usuarioRol.getRol();
 
-	                return new Rol(
-	                        rolEntity.getIdRol(),
-	                        rolEntity.getNombre(),
-	                        rolEntity.getDescripcion()
-	                );
-	            })
-	            .toList();
+			return new Rol(rolEntity.getIdRol(), rolEntity.getNombre(), rolEntity.getDescripcion());
+		}).toList();
 
-	    return new Usuario(
-	            entity.getIdUsuario(),
-	            entity.getCedula(),
-	            entity.getNombre(),
-	            entity.getApellido(),
-	            entity.getCorreo(),
-	            entity.getContrasena(),
-	            entity.getCelular(),
-	            entity.getEstado(),
-	            entity.getFechaRegistro(),
-	            roles
-	    );
+		return new Usuario(entity.getIdUsuario(), entity.getCedula(), entity.getNombre(), entity.getApellido(),
+				entity.getCorreo(), entity.getContrasena(), entity.getCelular(), entity.getEstado(),
+				entity.getFechaRegistro(), roles);
+	}
+
+	@Override
+	public Usuario actualizar(Usuario usuario) {
+
+		if (usuario == null) {
+			throw new RuntimeException("El usuario no puede ser nulo");
+		}
+
+		if (usuario.getIdUsuario() <= 0) {
+			throw new RuntimeException("El usuario debe tener un ID válido para actualizarse");
+		}
+
+		UsuarioEntity entityExistente = usuarioJpaRepositorio.findById(usuario.getIdUsuario())
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + usuario.getIdUsuario()));
+
+		entityExistente.setCedula(usuario.getCedula());
+		entityExistente.setNombre(usuario.getNombre());
+		entityExistente.setApellido(usuario.getApellido());
+		entityExistente.setCorreo(usuario.getCorreo());
+		entityExistente.setContrasena(usuario.getContrasena());
+		entityExistente.setCelular(usuario.getCelular());
+		entityExistente.setEstado(usuario.getEstado());
+		entityExistente.setFechaRegistro(usuario.getFechaRegistro());
+
+		UsuarioEntity guardado = usuarioJpaRepositorio.save(entityExistente);
+
+		return mapToDomain(guardado);
+	}
+
+	@Override
+	public Usuario actualizarContrasena(int idUsuario, String nuevaContrasena) {
+
+		UsuarioEntity entity = usuarioJpaRepositorio.findById(idUsuario)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + idUsuario));
+
+		entity.setContrasena(nuevaContrasena);
+
+		UsuarioEntity guardado = usuarioJpaRepositorio.save(entity);
+
+		return mapToDomain(guardado);
 	}
 }

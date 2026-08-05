@@ -9,6 +9,9 @@ public class DetallePedidosResponseDto {
 	private int idProducto;
 	private int idPedido;
 	
+	private String nombreProducto;
+	private String imagenUrl;
+	
 	public int getIdDetallePedido() {
 		return idDetallePedido;
 	}
@@ -45,6 +48,19 @@ public class DetallePedidosResponseDto {
 	public void setIdPedido(int idPedido) {
 		this.idPedido = idPedido;
 	}
+	public String getNombreProducto() {
+		return nombreProducto;
+	}
+	public void setNombreProducto(String nombreProducto) {
+		this.nombreProducto = nombreProducto;
+	}
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
+	}
+	
 	
 	
 }

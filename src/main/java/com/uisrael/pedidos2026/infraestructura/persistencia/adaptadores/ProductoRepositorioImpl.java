@@ -1,30 +1,61 @@
 package com.uisrael.pedidos2026.infraestructura.persistencia.adaptadores;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import com.uisrael.pedidos2026.dominio.entidades.Producto;
 import com.uisrael.pedidos2026.dominio.repositorios.IProductoRepositorio;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.CategoriaEntity;
+import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.PrecioProductoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.jpa.ProductoEntity;
 import com.uisrael.pedidos2026.infraestructura.persistencia.mapeadores.IProductoJpaMapper;
+import com.uisrael.pedidos2026.infraestructura.repositorios.IPrecioProductoJpaRepositorio;
 import com.uisrael.pedidos2026.infraestructura.repositorios.IProductoJpaRepositorio;
 
 public class ProductoRepositorioImpl implements IProductoRepositorio {
 
 	private final IProductoJpaRepositorio jpaRepositorio;
 	private final IProductoJpaMapper entityMapper;
+	private final IPrecioProductoJpaRepositorio precioProductoJpaRepositorio;
 
-	public ProductoRepositorioImpl(IProductoJpaRepositorio jpaRepositorio, IProductoJpaMapper entityMapper) {
+	public ProductoRepositorioImpl(IProductoJpaRepositorio jpaRepositorio, IProductoJpaMapper entityMapper,
+			IPrecioProductoJpaRepositorio precioProductoJpaRepositorio) {
+		super();
 		this.jpaRepositorio = jpaRepositorio;
 		this.entityMapper = entityMapper;
+		this.precioProductoJpaRepositorio = precioProductoJpaRepositorio;
 	}
 
 	@Override
 	public Producto guardar(Producto nuevoProducto) {
 		ProductoEntity entity = entityMapper.toEntity(nuevoProducto);
-		ProductoEntity guardado = jpaRepositorio.save(entity);
-		return entityMapper.toDomain(guardado);
+
+	    entity.setIdProducto(0);
+
+	    ProductoEntity guardado =
+	    		jpaRepositorio.save(entity);
+
+	    if (guardado.getPrecio() == null
+	            || guardado.getPrecio() <= 0) {
+
+	        throw new RuntimeException(
+	                "El precio inicial debe ser mayor que cero"
+	        );
+	    }
+
+	    PrecioProductoEntity precioInicial =
+	            new PrecioProductoEntity();
+
+	    precioInicial.setProducto(guardado);
+	    precioInicial.setPrecio(guardado.getPrecio());
+	    precioInicial.setFechaInicio(new Date());
+	    precioInicial.setFechaFin(null);
+	    precioInicial.setActivo(true);
+
+	    precioProductoJpaRepositorio.save(precioInicial);
+
+	    return entityMapper.toDomain(guardado);
 	}
 
 	@Override

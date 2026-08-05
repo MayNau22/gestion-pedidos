@@ -8,6 +8,9 @@ public class DetallePedidos {
     private int cantidad;
     private double precioUnitario;
     private double subtotal;
+    
+    private String nombreProducto;
+    private String imagenUrl;
 
     public DetallePedidos() {
     }
@@ -75,4 +78,22 @@ public class DetallePedidos {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+
+	public String getNombreProducto() {
+		return nombreProducto;
+	}
+
+	public void setNombreProducto(String nombreProducto) {
+		this.nombreProducto = nombreProducto;
+	}
+
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
+
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
+	}
+    
+    
 }
